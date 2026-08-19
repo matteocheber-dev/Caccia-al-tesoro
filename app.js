@@ -212,43 +212,36 @@ function buildOverpassQuery(fragments, radius, lat, lon) {
   const body = fragments.map(f => f(radius, lat, lon)).join("\n      ");
   return `[out:json][timeout:25];(\n      ${body}\n    );out body 40;`;
 }
-const OVERPASS_ENDPOINTS = ["https://overpass.kumi.systems/api/interpreter", "https://overpass-api.de/api/interpreter"];
 async function fetchPOIs(lat, lon, radius, fragments) {
   const query = buildOverpassQuery(fragments, radius, lat, lon);
-  let lastErr = null;
-  for (const endpoint of OVERPASS_ENDPOINTS) {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 20000);
-    try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Accept": "application/json, */*"
-        },
-        body: "data=" + encodeURIComponent(query),
-        signal: ctrl.signal
-      });
-      clearTimeout(t);
-      if (!res.ok) {
-        lastErr = new Error("Overpass error " + res.status);
-        continue;
-      }
-      const data = await res.json();
-      return (data.elements || []).filter(el => el.tags && el.tags.name).map(el => ({
-        id: String(el.id),
-        name: el.tags.name,
-        lat: el.lat,
-        lon: el.lon,
-        tags: el.tags,
-        category: categoryLabel(el.tags)
-      }));
-    } catch (e) {
-      clearTimeout(t);
-      lastErr = e;
-    }
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 25000);
+  try {
+    const res = await fetch("/.netlify/functions/overpass", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        query
+      }),
+      signal: ctrl.signal
+    });
+    clearTimeout(t);
+    if (!res.ok) throw new Error("Overpass proxy error " + res.status);
+    const data = await res.json();
+    return (data.elements || []).filter(el => el.tags && el.tags.name).map(el => ({
+      id: String(el.id),
+      name: el.tags.name,
+      lat: el.lat,
+      lon: el.lon,
+      tags: el.tags,
+      category: categoryLabel(el.tags)
+    }));
+  } catch (e) {
+    clearTimeout(t);
+    throw e;
   }
-  throw lastErr || new Error("Overpass non raggiungibile");
 }
 function computeTourismPlan(transportKey, minutes, visitTime) {
   const speed = TRANSPORT[transportKey].speed; // metri al minuto
