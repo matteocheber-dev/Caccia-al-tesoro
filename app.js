@@ -5,7 +5,6 @@ import { supabase } from "./supabase-client.js";
 /* ---------------------------------------------------------------
    PALETTE & COSTANTI — "Diario di spedizione"
 ------------------------------------------------------------------*/
-import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";
 const C = {
   ink: "#1B2430",
   inkSoft: "#242E3D",
@@ -451,7 +450,7 @@ function fileToBase64(file) {
    COMPONENTI DI SUPPORTO GRAFICO
 ------------------------------------------------------------------*/
 function ContourBackground() {
-  return /*#__PURE__*/_jsxDEV("svg", {
+  return /*#__PURE__*/React.createElement("svg", {
     style: {
       position: "absolute",
       inset: 0,
@@ -461,23 +460,23 @@ function ContourBackground() {
       pointerEvents: "none"
     },
     viewBox: "0 0 400 800",
-    preserveAspectRatio: "xMidYMid slice",
-    children: [60, 110, 160, 210, 260].map((r, i) => /*#__PURE__*/_jsxDEV("ellipse", {
-      cx: 200 + (i % 2 === 0 ? -40 : 60),
-      cy: 150 + i * 140,
-      rx: r,
-      ry: r * 0.6,
-      fill: "none",
-      stroke: C.parchment,
-      strokeWidth: "1.5"
-    }, i, false))
-  }, void 0, false);
+    preserveAspectRatio: "xMidYMid slice"
+  }, [60, 110, 160, 210, 260].map((r, i) => /*#__PURE__*/React.createElement("ellipse", {
+    key: i,
+    cx: 200 + (i % 2 === 0 ? -40 : 60),
+    cy: 150 + i * 140,
+    rx: r,
+    ry: r * 0.6,
+    fill: "none",
+    stroke: C.parchment,
+    strokeWidth: "1.5"
+  })));
 }
 function StampBadge({
   children,
   color
 }) {
-  return /*#__PURE__*/_jsxDEV("span", {
+  return /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: FONT_MONO,
       fontSize: 11,
@@ -487,73 +486,69 @@ function StampBadge({
       border: `1.5px solid ${color}`,
       borderRadius: 999,
       padding: "3px 10px"
-    },
-    children: children
-  }, void 0, false);
+    }
+  }, children);
 }
 function CompassDial({
   bearingDeg,
   size = 96
 }) {
-  return /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
     style: {
       position: "relative",
       width: size,
       height: size
-    },
-    children: /*#__PURE__*/_jsxDEV("svg", {
-      width: size,
-      height: size,
-      viewBox: "0 0 100 100",
-      children: [/*#__PURE__*/_jsxDEV("circle", {
-        cx: "50",
-        cy: "50",
-        r: "47",
-        fill: C.parchment,
-        stroke: C.brass,
-        strokeWidth: "2"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("circle", {
-        cx: "50",
-        cy: "50",
-        r: "40",
-        fill: "none",
-        stroke: C.brassLight,
-        strokeWidth: "1"
-      }, void 0, false), ["N", "E", "S", "O"].map((d, i) => {
-        const ang = i * 90;
-        const rad = toRad(ang - 90);
-        const x = 50 + 34 * Math.cos(rad);
-        const y = 50 + 34 * Math.sin(rad);
-        return /*#__PURE__*/_jsxDEV("text", {
-          x: x,
-          y: y + 3,
-          fontSize: "9",
-          fontFamily: FONT_MONO,
-          fill: C.ink70,
-          textAnchor: "middle",
-          children: d
-        }, d, false);
-      }), /*#__PURE__*/_jsxDEV("g", {
-        style: {
-          transform: `rotate(${bearingDeg}deg)`,
-          transformOrigin: "50px 50px",
-          transition: "transform 0.6s ease-out"
-        },
-        children: [/*#__PURE__*/_jsxDEV("polygon", {
-          points: "50,14 44,52 50,46 56,52",
-          fill: C.rust
-        }, void 0, false), /*#__PURE__*/_jsxDEV("polygon", {
-          points: "50,86 44,54 50,60 56,54",
-          fill: C.ink70
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("circle", {
-        cx: "50",
-        cy: "50",
-        r: "4",
-        fill: C.brass
-      }, void 0, false)]
-    }, void 0, true)
-  }, void 0, false);
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: size,
+    height: size,
+    viewBox: "0 0 100 100"
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: "50",
+    cy: "50",
+    r: "47",
+    fill: C.parchment,
+    stroke: C.brass,
+    strokeWidth: "2"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "50",
+    cy: "50",
+    r: "40",
+    fill: "none",
+    stroke: C.brassLight,
+    strokeWidth: "1"
+  }), ["N", "E", "S", "O"].map((d, i) => {
+    const ang = i * 90;
+    const rad = toRad(ang - 90);
+    const x = 50 + 34 * Math.cos(rad);
+    const y = 50 + 34 * Math.sin(rad);
+    return /*#__PURE__*/React.createElement("text", {
+      key: d,
+      x: x,
+      y: y + 3,
+      fontSize: "9",
+      fontFamily: FONT_MONO,
+      fill: C.ink70,
+      textAnchor: "middle"
+    }, d);
+  }), /*#__PURE__*/React.createElement("g", {
+    style: {
+      transform: `rotate(${bearingDeg}deg)`,
+      transformOrigin: "50px 50px",
+      transition: "transform 0.6s ease-out"
+    }
+  }, /*#__PURE__*/React.createElement("polygon", {
+    points: "50,14 44,52 50,46 56,52",
+    fill: C.rust
+  }), /*#__PURE__*/React.createElement("polygon", {
+    points: "50,86 44,54 50,60 56,54",
+    fill: C.ink70
+  })), /*#__PURE__*/React.createElement("circle", {
+    cx: "50",
+    cy: "50",
+    r: "4",
+    fill: C.brass
+  })));
 }
 
 /* ---------------------------------------------------------------
@@ -978,8 +973,7 @@ export default function App() {
   const canPhotograph = distToActive != null && distToActive <= unlockDist;
   const allFound = targets.length > 0 && targets.every(t => t.found);
   const foundCount = targets.filter(t => t.found).length;
-  const globalFonts = /*#__PURE__*/_jsxDEV("style", {
-    children: `
+  const globalFonts = /*#__PURE__*/React.createElement("style", null, `
       @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
       * { box-sizing: border-box; }
       @keyframes stampIn {
@@ -992,10 +986,9 @@ export default function App() {
       .rise { animation: riseIn 0.45s ease-out both; }
       button:focus-visible, input:focus-visible { outline: 2px solid ${C.brassLight}; outline-offset: 2px; }
       @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-    `
-  }, void 0, false);
+    `);
   if (session === undefined) {
-    return /*#__PURE__*/_jsxDEV("div", {
+    return /*#__PURE__*/React.createElement("div", {
       style: {
         minHeight: "100vh",
         background: C.ink,
@@ -1004,17 +997,16 @@ export default function App() {
         justifyContent: "center",
         color: C.parchment,
         fontFamily: FONT_BODY
-      },
-      children: [globalFonts, /*#__PURE__*/_jsxDEV(Loader2, {
-        size: 26,
-        style: {
-          animation: "spin 1s linear infinite"
-        }
-      }, void 0, false)]
-    }, void 0, true);
+      }
+    }, globalFonts, /*#__PURE__*/React.createElement(Loader2, {
+      size: 26,
+      style: {
+        animation: "spin 1s linear infinite"
+      }
+    }));
   }
   if (!session) {
-    return /*#__PURE__*/_jsxDEV("div", {
+    return /*#__PURE__*/React.createElement("div", {
       style: {
         minHeight: "100vh",
         background: C.ink,
@@ -1022,35 +1014,33 @@ export default function App() {
         color: C.parchment,
         position: "relative",
         overflow: "hidden"
-      },
-      children: [globalFonts, /*#__PURE__*/_jsxDEV(ContourBackground, {}, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          position: "relative",
-          maxWidth: 480,
-          margin: "0 auto",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "20px"
-        },
-        children: /*#__PURE__*/_jsxDEV(AuthScreen, {
-          authView: authView,
-          setAuthView: setAuthView,
-          authEmail: authEmail,
-          setAuthEmail: setAuthEmail,
-          authPassword: authPassword,
-          setAuthPassword: setAuthPassword,
-          authUsername: authUsername,
-          setAuthUsername: setAuthUsername,
-          authError: authError,
-          authLoading: authLoading,
-          onSubmit: handleAuthSubmit
-        }, void 0, false)
-      }, void 0, false)]
-    }, void 0, true);
+      }
+    }, globalFonts, /*#__PURE__*/React.createElement(ContourBackground, null), /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: "relative",
+        maxWidth: 480,
+        margin: "0 auto",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "20px"
+      }
+    }, /*#__PURE__*/React.createElement(AuthScreen, {
+      authView: authView,
+      setAuthView: setAuthView,
+      authEmail: authEmail,
+      setAuthEmail: setAuthEmail,
+      authPassword: authPassword,
+      setAuthPassword: setAuthPassword,
+      authUsername: authUsername,
+      setAuthUsername: setAuthUsername,
+      authError: authError,
+      authLoading: authLoading,
+      onSubmit: handleAuthSubmit
+    })));
   }
-  return /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
     style: {
       minHeight: "100vh",
       background: C.ink,
@@ -1058,177 +1048,170 @@ export default function App() {
       color: C.parchment,
       position: "relative",
       overflow: "hidden"
+    }
+  }, globalFonts, /*#__PURE__*/React.createElement(ContourBackground, null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      maxWidth: 480,
+      margin: "0 auto",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column"
+    }
+  }, /*#__PURE__*/React.createElement(TopBar, {
+    screen: screen,
+    mode: mode,
+    score: score,
+    foundCount: foundCount,
+    totalCount: targets.length,
+    playerName: playerName,
+    onLogout: handleLogout,
+    onBack: () => {
+      if (screen === "active") setScreen("list");else if (screen === "leaderboard") setScreen(targets.length ? "list" : "setup");else if (screen === "summary") setScreen("list");
     },
-    children: [globalFonts, /*#__PURE__*/_jsxDEV(ContourBackground, {}, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        position: "relative",
-        maxWidth: 480,
-        margin: "0 auto",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column"
-      },
-      children: [/*#__PURE__*/_jsxDEV(TopBar, {
-        screen: screen,
-        mode: mode,
-        score: score,
-        foundCount: foundCount,
-        totalCount: targets.length,
-        playerName: playerName,
-        onLogout: handleLogout,
-        onBack: () => {
-          if (screen === "active") setScreen("list");else if (screen === "leaderboard") setScreen(targets.length ? "list" : "setup");else if (screen === "summary") setScreen("list");
-        },
-        onLeaderboard: () => {
-          loadLeaderboard();
-          setScreen("leaderboard");
-        }
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          flex: 1,
-          padding: "0 20px 32px"
-        },
-        children: [screen === "setup" && /*#__PURE__*/_jsxDEV(SetupScreen, {
-          mode: mode,
-          setMode: setMode,
-          playerName: playerName,
-          transportKey: transportKey,
-          setTransportKey: setTransportKey,
-          difficultyKey: difficultyKey,
-          setDifficultyKey: setDifficultyKey,
-          tourismTypeKey: tourismTypeKey,
-          setTourismTypeKey: setTourismTypeKey,
-          timeKey: timeKey,
-          setTimeKey: setTimeKey,
-          onStart: startExpedition,
-          loading: loadingHunt,
-          error: huntError,
-          kidsMode: kidsMode,
-          setKidsMode: setKidsMode,
-          positionSource: positionSource,
-          manualLabel: manualLabel,
-          showManualLocation: showManualLocation,
-          setShowManualLocation: setShowManualLocation,
-          manualQuery: manualQuery,
-          setManualQuery: setManualQuery,
-          manualLat: manualLat,
-          setManualLat: setManualLat,
-          manualLon: manualLon,
-          setManualLon: setManualLon,
-          geocoding: geocoding,
-          geocodeError: geocodeError,
-          onManualSearch: handleManualSearch,
-          onManualCoords: handleManualCoords,
-          onShare: handleShare,
-          shareCopied: shareCopied
-        }, void 0, false), screen === "list" && /*#__PURE__*/_jsxDEV(ListScreen, {
-          mode: mode,
-          kidsMode: kidsMode,
-          targets: targets,
-          position: position,
-          locError: locError,
-          onOpen: openTarget,
-          difficultyKey: difficultyKey,
-          allFound: allFound,
-          onSummary: () => {
-            logSessionComplete(foundCount);
-            setScreen("summary");
-          }
-        }, void 0, false), screen === "active" && activeTarget && /*#__PURE__*/_jsxDEV(ActiveScreen, {
-          mode: mode,
-          kidsMode: kidsMode,
-          target: activeTarget,
-          dist: distToActive,
-          bearingDeg: bearingToActive,
-          unlock: unlockDist,
-          canPhotograph: canPhotograph,
-          verifying: verifying,
-          verifyResult: verifyResult,
-          loadingInfo: loadingInfo,
-          onPhoto: triggerCamera,
-          locError: locError
-        }, void 0, false), screen === "summary" && /*#__PURE__*/_jsxDEV(SummaryScreen, {
-          mode: mode,
-          targets: targets,
-          score: score,
-          playerName: playerName,
-          onLeaderboard: () => {
-            loadLeaderboard();
-            setScreen("leaderboard");
-          },
-          onRestart: () => setScreen("setup"),
-          feedbackRating: feedbackRating,
-          setFeedbackRating: setFeedbackRating,
-          feedbackComment: feedbackComment,
-          setFeedbackComment: setFeedbackComment,
-          feedbackSubmitting: feedbackSubmitting,
-          feedbackSubmitted: feedbackSubmitted,
-          onSubmitFeedback: submitFeedback
-        }, void 0, false), screen === "leaderboard" && /*#__PURE__*/_jsxDEV(LeaderboardScreen, {
-          leaderboard: leaderboard,
-          playerName: playerName
-        }, void 0, false)]
-      }, void 0, true)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("input", {
-      ref: fileInputRef,
-      type: "file",
-      accept: "image/*",
-      capture: "environment",
-      style: {
-        display: "none"
-      },
-      onChange: handlePhoto
-    }, void 0, false), showStamp && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        position: "fixed",
-        inset: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        pointerEvents: "none",
-        zIndex: 50
-      },
-      children: /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          animation: "stampIn 0.5s ease-out",
-          border: `4px solid ${kidsMode ? C.coral : mode === "gioco" ? C.rust : C.teal}`,
-          borderRadius: "50%",
-          width: 140,
-          height: 140,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transform: "rotate(-8deg)",
-          background: kidsMode ? "rgba(226,115,79,0.14)" : mode === "gioco" ? "rgba(166,80,58,0.12)" : "rgba(62,107,107,0.14)"
-        },
-        children: /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            textAlign: "center",
-            color: kidsMode ? C.coral : mode === "gioco" ? C.rust : C.teal,
-            fontFamily: FONT_DISPLAY,
-            fontWeight: 700
-          },
-          children: [kidsMode ? /*#__PURE__*/_jsxDEV(PartyPopper, {
-            size: 30,
-            style: {
-              marginBottom: 2
-            }
-          }, void 0, false) : /*#__PURE__*/_jsxDEV(Check, {
-            size: 30,
-            style: {
-              marginBottom: 2
-            }
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 14,
-              letterSpacing: 1
-            },
-            children: kidsMode ? "EVVIVA!" : mode === "gioco" ? "TROVATO" : "SCOPERTO"
-          }, void 0, false)]
-        }, void 0, true)
-      }, void 0, false)
-    }, void 0, false)]
-  }, void 0, true);
+    onLeaderboard: () => {
+      loadLeaderboard();
+      setScreen("leaderboard");
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      padding: "0 20px 32px"
+    }
+  }, screen === "setup" && /*#__PURE__*/React.createElement(SetupScreen, {
+    mode: mode,
+    setMode: setMode,
+    playerName: playerName,
+    transportKey: transportKey,
+    setTransportKey: setTransportKey,
+    difficultyKey: difficultyKey,
+    setDifficultyKey: setDifficultyKey,
+    tourismTypeKey: tourismTypeKey,
+    setTourismTypeKey: setTourismTypeKey,
+    timeKey: timeKey,
+    setTimeKey: setTimeKey,
+    onStart: startExpedition,
+    loading: loadingHunt,
+    error: huntError,
+    kidsMode: kidsMode,
+    setKidsMode: setKidsMode,
+    positionSource: positionSource,
+    manualLabel: manualLabel,
+    showManualLocation: showManualLocation,
+    setShowManualLocation: setShowManualLocation,
+    manualQuery: manualQuery,
+    setManualQuery: setManualQuery,
+    manualLat: manualLat,
+    setManualLat: setManualLat,
+    manualLon: manualLon,
+    setManualLon: setManualLon,
+    geocoding: geocoding,
+    geocodeError: geocodeError,
+    onManualSearch: handleManualSearch,
+    onManualCoords: handleManualCoords,
+    onShare: handleShare,
+    shareCopied: shareCopied
+  }), screen === "list" && /*#__PURE__*/React.createElement(ListScreen, {
+    mode: mode,
+    kidsMode: kidsMode,
+    targets: targets,
+    position: position,
+    locError: locError,
+    onOpen: openTarget,
+    difficultyKey: difficultyKey,
+    allFound: allFound,
+    onSummary: () => {
+      logSessionComplete(foundCount);
+      setScreen("summary");
+    }
+  }), screen === "active" && activeTarget && /*#__PURE__*/React.createElement(ActiveScreen, {
+    mode: mode,
+    kidsMode: kidsMode,
+    target: activeTarget,
+    dist: distToActive,
+    bearingDeg: bearingToActive,
+    unlock: unlockDist,
+    canPhotograph: canPhotograph,
+    verifying: verifying,
+    verifyResult: verifyResult,
+    loadingInfo: loadingInfo,
+    onPhoto: triggerCamera,
+    locError: locError
+  }), screen === "summary" && /*#__PURE__*/React.createElement(SummaryScreen, {
+    mode: mode,
+    targets: targets,
+    score: score,
+    playerName: playerName,
+    onLeaderboard: () => {
+      loadLeaderboard();
+      setScreen("leaderboard");
+    },
+    onRestart: () => setScreen("setup"),
+    feedbackRating: feedbackRating,
+    setFeedbackRating: setFeedbackRating,
+    feedbackComment: feedbackComment,
+    setFeedbackComment: setFeedbackComment,
+    feedbackSubmitting: feedbackSubmitting,
+    feedbackSubmitted: feedbackSubmitted,
+    onSubmitFeedback: submitFeedback
+  }), screen === "leaderboard" && /*#__PURE__*/React.createElement(LeaderboardScreen, {
+    leaderboard: leaderboard,
+    playerName: playerName
+  }))), /*#__PURE__*/React.createElement("input", {
+    ref: fileInputRef,
+    type: "file",
+    accept: "image/*",
+    capture: "environment",
+    style: {
+      display: "none"
+    },
+    onChange: handlePhoto
+  }), showStamp && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "fixed",
+      inset: 0,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      pointerEvents: "none",
+      zIndex: 50
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      animation: "stampIn 0.5s ease-out",
+      border: `4px solid ${kidsMode ? C.coral : mode === "gioco" ? C.rust : C.teal}`,
+      borderRadius: "50%",
+      width: 140,
+      height: 140,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      transform: "rotate(-8deg)",
+      background: kidsMode ? "rgba(226,115,79,0.14)" : mode === "gioco" ? "rgba(166,80,58,0.12)" : "rgba(62,107,107,0.14)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: kidsMode ? C.coral : mode === "gioco" ? C.rust : C.teal,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700
+    }
+  }, kidsMode ? /*#__PURE__*/React.createElement(PartyPopper, {
+    size: 30,
+    style: {
+      marginBottom: 2
+    }
+  }) : /*#__PURE__*/React.createElement(Check, {
+    size: 30,
+    style: {
+      marginBottom: 2
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 14,
+      letterSpacing: 1
+    }
+  }, kidsMode ? "EVVIVA!" : mode === "gioco" ? "TROVATO" : "SCOPERTO")))));
 }
 
 /* ---------------------------------------------------------------
@@ -1246,102 +1229,93 @@ function TopBar({
   onLeaderboard
 }) {
   const showBack = screen === "active" || screen === "summary" || screen === "leaderboard";
-  return /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       padding: "18px 20px 10px",
       gap: 8
-    },
-    children: [/*#__PURE__*/_jsxDEV("div", {
-      style: {
-        width: 40,
-        display: "flex"
-      },
-      children: showBack && /*#__PURE__*/_jsxDEV("button", {
-        onClick: onBack,
-        style: {
-          background: "none",
-          border: "none",
-          color: C.parchment,
-          cursor: "pointer",
-          padding: 6
-        },
-        children: /*#__PURE__*/_jsxDEV(ChevronLeft, {
-          size: 22
-        }, void 0, false)
-      }, void 0, false)
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontFamily: FONT_DISPLAY,
-        fontSize: 16,
-        fontWeight: 600,
-        letterSpacing: 0.5,
-        color: C.brassLight,
-        textAlign: "center",
-        flex: 1,
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap"
-      },
-      children: screen === "setup" && playerName ? `Ciao, ${playerName}` : "Diario di Spedizione"
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 4
-      },
-      children: [mode === "gioco" ? /*#__PURE__*/_jsxDEV("button", {
-        onClick: onLeaderboard,
-        style: {
-          background: "none",
-          border: "none",
-          color: C.parchment,
-          cursor: "pointer",
-          padding: 6,
-          display: "flex",
-          alignItems: "center",
-          gap: 4
-        },
-        children: [/*#__PURE__*/_jsxDEV(Trophy, {
-          size: 18,
-          color: C.brassLight
-        }, void 0, false), score > 0 && /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontFamily: FONT_MONO,
-            fontSize: 13
-          },
-          children: score
-        }, void 0, false)]
-      }, void 0, true) : totalCount > 0 && /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 12,
-          color: C.teal,
-          display: "flex",
-          alignItems: "center",
-          gap: 4
-        },
-        children: [/*#__PURE__*/_jsxDEV(MapPin, {
-          size: 14
-        }, void 0, false), " ", foundCount, "/", totalCount]
-      }, void 0, true), screen === "setup" && /*#__PURE__*/_jsxDEV("button", {
-        onClick: onLogout,
-        title: "Esci",
-        style: {
-          background: "none",
-          border: "none",
-          color: C.parchmentDark,
-          cursor: "pointer",
-          padding: 6
-        },
-        children: /*#__PURE__*/_jsxDEV(LogOut, {
-          size: 16
-        }, void 0, false)
-      }, void 0, false)]
-    }, void 0, true)]
-  }, void 0, true);
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 40,
+      display: "flex"
+    }
+  }, showBack && /*#__PURE__*/React.createElement("button", {
+    onClick: onBack,
+    style: {
+      background: "none",
+      border: "none",
+      color: C.parchment,
+      cursor: "pointer",
+      padding: 6
+    }
+  }, /*#__PURE__*/React.createElement(ChevronLeft, {
+    size: 22
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_DISPLAY,
+      fontSize: 16,
+      fontWeight: 600,
+      letterSpacing: 0.5,
+      color: C.brassLight,
+      textAlign: "center",
+      flex: 1,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    }
+  }, screen === "setup" && playerName ? `Ciao, ${playerName}` : "Diario di Spedizione"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 4
+    }
+  }, mode === "gioco" ? /*#__PURE__*/React.createElement("button", {
+    onClick: onLeaderboard,
+    style: {
+      background: "none",
+      border: "none",
+      color: C.parchment,
+      cursor: "pointer",
+      padding: 6,
+      display: "flex",
+      alignItems: "center",
+      gap: 4
+    }
+  }, /*#__PURE__*/React.createElement(Trophy, {
+    size: 18,
+    color: C.brassLight
+  }), score > 0 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 13
+    }
+  }, score)) : totalCount > 0 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      color: C.teal,
+      display: "flex",
+      alignItems: "center",
+      gap: 4
+    }
+  }, /*#__PURE__*/React.createElement(MapPin, {
+    size: 14
+  }), " ", foundCount, "/", totalCount), screen === "setup" && /*#__PURE__*/React.createElement("button", {
+    onClick: onLogout,
+    title: "Esci",
+    style: {
+      background: "none",
+      border: "none",
+      color: C.parchmentDark,
+      cursor: "pointer",
+      padding: 6
+    }
+  }, /*#__PURE__*/React.createElement(LogOut, {
+    size: 16
+  }))));
 }
 
 /* ---------------------------------------------------------------
@@ -1360,203 +1334,187 @@ function AuthScreen({
   authLoading,
   onSubmit
 }) {
-  return /*#__PURE__*/_jsxDEV("div", {
-    className: "rise",
-    children: [/*#__PURE__*/_jsxDEV("div", {
-      style: {
-        textAlign: "center",
-        marginBottom: 24
-      },
-      children: [/*#__PURE__*/_jsxDEV(Compass, {
-        size: 36,
-        color: C.brassLight
-      }, void 0, false), /*#__PURE__*/_jsxDEV("h1", {
-        style: {
-          fontFamily: FONT_DISPLAY,
-          fontSize: 24,
-          fontWeight: 700,
-          margin: "10px 0 4px"
-        },
-        children: "Diario di Spedizione"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("p", {
-        style: {
-          color: C.parchmentDark,
-          fontSize: 13
-        },
-        children: authView === "signup" ? "Crea il tuo account da esploratore" : "Accedi per continuare l'esplorazione"
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        display: "flex",
-        gap: 8,
-        marginBottom: 20
-      },
-      children: [/*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setAuthView("login"),
-        style: {
-          flex: 1,
-          padding: "10px",
-          borderRadius: 10,
-          cursor: "pointer",
-          textAlign: "center",
-          border: `1.5px solid ${authView === "login" ? C.brassLight : C.parchmentLine}`,
-          background: authView === "login" ? "rgba(217,174,102,0.15)" : "transparent",
-          color: C.parchment,
-          fontSize: 13,
-          fontWeight: 600
-        },
-        children: "Accedi"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setAuthView("signup"),
-        style: {
-          flex: 1,
-          padding: "10px",
-          borderRadius: 10,
-          cursor: "pointer",
-          textAlign: "center",
-          border: `1.5px solid ${authView === "signup" ? C.brassLight : C.parchmentLine}`,
-          background: authView === "signup" ? "rgba(217,174,102,0.15)" : "transparent",
-          color: C.parchment,
-          fontSize: 13,
-          fontWeight: 600
-        },
-        children: "Registrati"
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("form", {
-      onSubmit: onSubmit,
-      children: [authView === "signup" && /*#__PURE__*/_jsxDEV(_Fragment, {
-        children: [/*#__PURE__*/_jsxDEV("label", {
-          style: {
-            fontFamily: FONT_MONO,
-            fontSize: 12,
-            letterSpacing: 1,
-            color: C.brassLight,
-            textTransform: "uppercase"
-          },
-          children: "Nome esploratore"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("input", {
-          value: authUsername,
-          onChange: e => setAuthUsername(e.target.value),
-          placeholder: "Come apparirai in classifica",
-          style: {
-            width: "100%",
-            marginTop: 6,
-            marginBottom: 16,
-            padding: "12px 14px",
-            borderRadius: 10,
-            border: `1.5px solid ${C.parchmentLine}`,
-            background: C.parchment,
-            color: C.ink,
-            fontSize: 15,
-            fontFamily: FONT_BODY
-          }
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("label", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 12,
-          letterSpacing: 1,
-          color: C.brassLight,
-          textTransform: "uppercase"
-        },
-        children: "Email"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("input", {
-        type: "email",
-        required: true,
-        value: authEmail,
-        onChange: e => setAuthEmail(e.target.value),
-        placeholder: "tuonome@email.it",
-        style: {
-          width: "100%",
-          marginTop: 6,
-          marginBottom: 16,
-          padding: "12px 14px",
-          borderRadius: 10,
-          border: `1.5px solid ${C.parchmentLine}`,
-          background: C.parchment,
-          color: C.ink,
-          fontSize: 15,
-          fontFamily: FONT_BODY
-        }
-      }, void 0, false), /*#__PURE__*/_jsxDEV("label", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 12,
-          letterSpacing: 1,
-          color: C.brassLight,
-          textTransform: "uppercase"
-        },
-        children: "Password"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("input", {
-        type: "password",
-        required: true,
-        minLength: 6,
-        value: authPassword,
-        onChange: e => setAuthPassword(e.target.value),
-        placeholder: "Almeno 6 caratteri",
-        style: {
-          width: "100%",
-          marginTop: 6,
-          marginBottom: 20,
-          padding: "12px 14px",
-          borderRadius: 10,
-          border: `1.5px solid ${C.parchmentLine}`,
-          background: C.parchment,
-          color: C.ink,
-          fontSize: 15,
-          fontFamily: FONT_BODY
-        }
-      }, void 0, false), authError && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: "rgba(166,80,58,0.15)",
-          border: `1px solid ${C.rust}`,
-          color: "#E8B4A6",
-          borderRadius: 10,
-          padding: "10px 12px",
-          fontSize: 13,
-          marginBottom: 16
-        },
-        children: authError
-      }, void 0, false), authView === "signup" && !authError && /*#__PURE__*/_jsxDEV("p", {
-        style: {
-          fontSize: 11,
-          color: C.parchmentDark,
-          marginBottom: 16
-        },
-        children: "Dopo la registrazione, controlla la posta per confermare l'email prima di accedere (a seconda di come è configurato il progetto Supabase)."
-      }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-        type: "submit",
-        disabled: authLoading,
-        style: {
-          width: "100%",
-          padding: "15px",
-          borderRadius: 12,
-          border: "none",
-          cursor: authLoading ? "default" : "pointer",
-          background: C.brass,
-          color: C.ink,
-          fontFamily: FONT_DISPLAY,
-          fontWeight: 700,
-          fontSize: 16,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 8,
-          opacity: authLoading ? 0.7 : 1
-        },
-        children: [authLoading ? /*#__PURE__*/_jsxDEV(Loader2, {
-          size: 18,
-          style: {
-            animation: "spin 1s linear infinite"
-          }
-        }, void 0, false) : authView === "signup" ? /*#__PURE__*/_jsxDEV(UserPlus, {
-          size: 18
-        }, void 0, false) : /*#__PURE__*/_jsxDEV(Mail, {
-          size: 18
-        }, void 0, false), authLoading ? "Un attimo…" : authView === "signup" ? "Crea account" : "Accedi"]
-      }, void 0, true)]
-    }, void 0, true)]
-  }, void 0, true);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rise"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      marginBottom: 24
+    }
+  }, /*#__PURE__*/React.createElement(Compass, {
+    size: 36,
+    color: C.brassLight
+  }), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontFamily: FONT_DISPLAY,
+      fontSize: 24,
+      fontWeight: 700,
+      margin: "10px 0 4px"
+    }
+  }, "Diario di Spedizione"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.parchmentDark,
+      fontSize: 13
+    }
+  }, authView === "signup" ? "Crea il tuo account da esploratore" : "Accedi per continuare l'esplorazione")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginBottom: 20
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setAuthView("login"),
+    style: {
+      flex: 1,
+      padding: "10px",
+      borderRadius: 10,
+      cursor: "pointer",
+      textAlign: "center",
+      border: `1.5px solid ${authView === "login" ? C.brassLight : C.parchmentLine}`,
+      background: authView === "login" ? "rgba(217,174,102,0.15)" : "transparent",
+      color: C.parchment,
+      fontSize: 13,
+      fontWeight: 600
+    }
+  }, "Accedi"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setAuthView("signup"),
+    style: {
+      flex: 1,
+      padding: "10px",
+      borderRadius: 10,
+      cursor: "pointer",
+      textAlign: "center",
+      border: `1.5px solid ${authView === "signup" ? C.brassLight : C.parchmentLine}`,
+      background: authView === "signup" ? "rgba(217,174,102,0.15)" : "transparent",
+      color: C.parchment,
+      fontSize: 13,
+      fontWeight: 600
+    }
+  }, "Registrati")), /*#__PURE__*/React.createElement("form", {
+    onSubmit: onSubmit
+  }, authView === "signup" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.brassLight,
+      textTransform: "uppercase"
+    }
+  }, "Nome esploratore"), /*#__PURE__*/React.createElement("input", {
+    value: authUsername,
+    onChange: e => setAuthUsername(e.target.value),
+    placeholder: "Come apparirai in classifica",
+    style: {
+      width: "100%",
+      marginTop: 6,
+      marginBottom: 16,
+      padding: "12px 14px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchment,
+      color: C.ink,
+      fontSize: 15,
+      fontFamily: FONT_BODY
+    }
+  })), /*#__PURE__*/React.createElement("label", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.brassLight,
+      textTransform: "uppercase"
+    }
+  }, "Email"), /*#__PURE__*/React.createElement("input", {
+    type: "email",
+    required: true,
+    value: authEmail,
+    onChange: e => setAuthEmail(e.target.value),
+    placeholder: "tuonome@email.it",
+    style: {
+      width: "100%",
+      marginTop: 6,
+      marginBottom: 16,
+      padding: "12px 14px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchment,
+      color: C.ink,
+      fontSize: 15,
+      fontFamily: FONT_BODY
+    }
+  }), /*#__PURE__*/React.createElement("label", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.brassLight,
+      textTransform: "uppercase"
+    }
+  }, "Password"), /*#__PURE__*/React.createElement("input", {
+    type: "password",
+    required: true,
+    minLength: 6,
+    value: authPassword,
+    onChange: e => setAuthPassword(e.target.value),
+    placeholder: "Almeno 6 caratteri",
+    style: {
+      width: "100%",
+      marginTop: 6,
+      marginBottom: 20,
+      padding: "12px 14px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchment,
+      color: C.ink,
+      fontSize: 15,
+      fontFamily: FONT_BODY
+    }
+  }), authError && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "rgba(166,80,58,0.15)",
+      border: `1px solid ${C.rust}`,
+      color: "#E8B4A6",
+      borderRadius: 10,
+      padding: "10px 12px",
+      fontSize: 13,
+      marginBottom: 16
+    }
+  }, authError), authView === "signup" && !authError && /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 11,
+      color: C.parchmentDark,
+      marginBottom: 16
+    }
+  }, "Dopo la registrazione, controlla la posta per confermare l'email prima di accedere (a seconda di come è configurato il progetto Supabase)."), /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    disabled: authLoading,
+    style: {
+      width: "100%",
+      padding: "15px",
+      borderRadius: 12,
+      border: "none",
+      cursor: authLoading ? "default" : "pointer",
+      background: C.brass,
+      color: C.ink,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700,
+      fontSize: 16,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      opacity: authLoading ? 0.7 : 1
+    }
+  }, authLoading ? /*#__PURE__*/React.createElement(Loader2, {
+    size: 18,
+    style: {
+      animation: "spin 1s linear infinite"
+    }
+  }) : authView === "signup" ? /*#__PURE__*/React.createElement(UserPlus, {
+    size: 18
+  }) : /*#__PURE__*/React.createElement(Mail, {
+    size: 18
+  }), authLoading ? "Un attimo…" : authView === "signup" ? "Crea account" : "Accedi")));
 }
 
 /* ---------------------------------------------------------------
@@ -1596,643 +1554,592 @@ function SetupScreen({
   onShare,
   shareCopied
 }) {
-  return /*#__PURE__*/_jsxDEV("div", {
-    className: "rise",
-    children: [/*#__PURE__*/_jsxDEV("div", {
-      style: {
-        textAlign: "center",
-        margin: "8px 0 20px"
-      },
-      children: [/*#__PURE__*/_jsxDEV(Compass, {
-        size: 36,
-        color: C.brassLight
-      }, void 0, false), /*#__PURE__*/_jsxDEV("h1", {
-        style: {
-          fontFamily: FONT_DISPLAY,
-          fontSize: 24,
-          fontWeight: 700,
-          margin: "10px 0 4px"
-        },
-        children: "La città come mappa da esplorare"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("p", {
-        style: {
-          color: C.parchmentDark,
-          fontSize: 13,
-          lineHeight: 1.5
-        },
-        children: "Monumenti, curiosità e angoli nascosti attorno a te, trasformati in indizi da scoprire."
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rise"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      margin: "8px 0 20px"
+    }
+  }, /*#__PURE__*/React.createElement(Compass, {
+    size: 36,
+    color: C.brassLight
+  }), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontFamily: FONT_DISPLAY,
+      fontSize: 24,
+      fontWeight: 700,
+      margin: "10px 0 4px"
+    }
+  }, "La città come mappa da esplorare"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.parchmentDark,
+      fontSize: 13,
+      lineHeight: 1.5
+    }
+  }, "Monumenti, curiosità e angoli nascosti attorno a te, trasformati in indizi da scoprire.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginBottom: 22
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setMode("gioco"),
+    style: {
+      flex: 1,
+      padding: "12px 8px",
+      borderRadius: 12,
+      cursor: "pointer",
+      textAlign: "center",
+      border: `1.5px solid ${mode === "gioco" ? C.brassLight : C.parchmentLine}`,
+      background: mode === "gioco" ? "rgba(217,174,102,0.15)" : "transparent",
+      color: C.parchment,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(Target, {
+    size: 20,
+    color: mode === "gioco" ? C.brassLight : C.parchmentDark
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13,
+      fontWeight: 600
+    }
+  }, "Caccia al tesoro"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: C.parchmentDark
+    }
+  }, "indizi criptici, punti, classifica")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setMode("turismo"),
+    style: {
+      flex: 1,
+      padding: "12px 8px",
+      borderRadius: 12,
+      cursor: "pointer",
+      textAlign: "center",
+      border: `1.5px solid ${mode === "turismo" ? C.teal : C.parchmentLine}`,
+      background: mode === "turismo" ? "rgba(62,107,107,0.18)" : "transparent",
+      color: C.parchment,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(Landmark, {
+    size: 20,
+    color: mode === "turismo" ? C.teal : C.parchmentDark
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13,
+      fontWeight: 600
+    }
+  }, "Turismo"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: C.parchmentDark
+    }
+  }, "scopri e impara, senza sfida"))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setKidsMode(v => !v),
+    style: {
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      gap: 10,
+      padding: "12px 14px",
+      marginBottom: 22,
+      borderRadius: 12,
+      cursor: "pointer",
+      textAlign: "left",
+      border: `1.5px solid ${kidsMode ? C.coral : C.parchmentLine}`,
+      background: kidsMode ? "rgba(226,115,79,0.16)" : "transparent"
+    }
+  }, /*#__PURE__*/React.createElement(PartyPopper, {
+    size: 22,
+    color: kidsMode ? C.coral : C.parchmentDark,
+    style: {
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: "block",
+      color: kidsMode ? C.coral : C.parchment,
+      fontSize: 13,
+      fontWeight: 600
+    }
+  }, "Modalità Bambini"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: "block",
+      color: C.parchmentDark,
+      fontSize: 11,
+      marginTop: 2
+    }
+  }, "Indizi più semplici e giocosi, meno tappe, foto più facili da confermare — da fare insieme a un adulto")), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 40,
+      height: 22,
+      borderRadius: 999,
+      flexShrink: 0,
+      position: "relative",
+      background: kidsMode ? C.coral : C.parchmentLine,
+      transition: "background 0.2s"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: "absolute",
+      top: 2,
+      left: kidsMode ? 20 : 2,
+      width: 18,
+      height: 18,
+      borderRadius: "50%",
+      background: C.parchment,
+      transition: "left 0.2s"
+    }
+  }))), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.parchmentDark,
+      fontSize: 13,
+      marginBottom: 22
+    }
+  }, "Esploratore: ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: C.brassLight,
+      fontWeight: 600
+    }
+  }, playerName)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.brassLight,
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Come ti muovi?"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: 10,
+      marginBottom: 22
+    }
+  }, Object.entries(TRANSPORT).map(([key, t]) => {
+    const Icon = t.icon;
+    const active = key === transportKey;
+    return /*#__PURE__*/React.createElement("button", {
+      key: key,
+      onClick: () => setTransportKey(key),
       style: {
         display: "flex",
-        gap: 8,
-        marginBottom: 22
-      },
-      children: [/*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setMode("gioco"),
-        style: {
-          flex: 1,
-          padding: "12px 8px",
-          borderRadius: 12,
-          cursor: "pointer",
-          textAlign: "center",
-          border: `1.5px solid ${mode === "gioco" ? C.brassLight : C.parchmentLine}`,
-          background: mode === "gioco" ? "rgba(217,174,102,0.15)" : "transparent",
-          color: C.parchment,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 6
-        },
-        children: [/*#__PURE__*/_jsxDEV(Target, {
-          size: 20,
-          color: mode === "gioco" ? C.brassLight : C.parchmentDark
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 13,
-            fontWeight: 600
-          },
-          children: "Caccia al tesoro"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 10,
-            color: C.parchmentDark
-          },
-          children: "indizi criptici, punti, classifica"
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setMode("turismo"),
-        style: {
-          flex: 1,
-          padding: "12px 8px",
-          borderRadius: 12,
-          cursor: "pointer",
-          textAlign: "center",
-          border: `1.5px solid ${mode === "turismo" ? C.teal : C.parchmentLine}`,
-          background: mode === "turismo" ? "rgba(62,107,107,0.18)" : "transparent",
-          color: C.parchment,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 6
-        },
-        children: [/*#__PURE__*/_jsxDEV(Landmark, {
-          size: 20,
-          color: mode === "turismo" ? C.teal : C.parchmentDark
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 13,
-            fontWeight: 600
-          },
-          children: "Turismo"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 10,
-            color: C.parchmentDark
-          },
-          children: "scopri e impara, senza sfida"
-        }, void 0, false)]
-      }, void 0, true)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-      onClick: () => setKidsMode(v => !v),
-      style: {
-        width: "100%",
-        display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        gap: 10,
-        padding: "12px 14px",
-        marginBottom: 22,
+        gap: 6,
+        padding: "14px 8px",
         borderRadius: 12,
         cursor: "pointer",
-        textAlign: "left",
-        border: `1.5px solid ${kidsMode ? C.coral : C.parchmentLine}`,
-        background: kidsMode ? "rgba(226,115,79,0.16)" : "transparent"
-      },
-      children: [/*#__PURE__*/_jsxDEV(PartyPopper, {
-        size: 22,
-        color: kidsMode ? C.coral : C.parchmentDark,
-        style: {
-          flexShrink: 0
-        }
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          flex: 1
-        },
-        children: [/*#__PURE__*/_jsxDEV("span", {
-          style: {
-            display: "block",
-            color: kidsMode ? C.coral : C.parchment,
-            fontSize: 13,
-            fontWeight: 600
-          },
-          children: "Modalità Bambini"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            display: "block",
-            color: C.parchmentDark,
-            fontSize: 11,
-            marginTop: 2
-          },
-          children: "Indizi più semplici e giocosi, meno tappe, foto più facili da confermare — da fare insieme a un adulto"
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          width: 40,
-          height: 22,
-          borderRadius: 999,
-          flexShrink: 0,
-          position: "relative",
-          background: kidsMode ? C.coral : C.parchmentLine,
-          transition: "background 0.2s"
-        },
-        children: /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            position: "absolute",
-            top: 2,
-            left: kidsMode ? 20 : 2,
-            width: 18,
-            height: 18,
-            borderRadius: "50%",
-            background: C.parchment,
-            transition: "left 0.2s"
-          }
-        }, void 0, false)
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("p", {
+        border: `1.5px solid ${active ? C.brassLight : C.parchmentLine}`,
+        background: active ? "rgba(217,174,102,0.15)" : "transparent",
+        color: C.parchment
+      }
+    }, /*#__PURE__*/React.createElement(Icon, {
+      size: 22,
+      color: active ? C.brassLight : C.parchmentDark
+    }), /*#__PURE__*/React.createElement("span", {
       style: {
-        color: C.parchmentDark,
         fontSize: 13,
-        marginBottom: 22
-      },
-      children: ["Esploratore: ", /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          color: C.brassLight,
-          fontWeight: 600
-        },
-        children: playerName
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
+        fontWeight: 500
+      }
+    }, t.label), /*#__PURE__*/React.createElement("span", {
       style: {
+        fontSize: 10,
+        color: C.parchmentDark,
+        textAlign: "center"
+      }
+    }, t.note));
+  })), mode === "gioco" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.brassLight,
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Difficoltà"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginBottom: 26
+    }
+  }, Object.entries(DIFFICULTY).map(([key, d]) => {
+    const active = key === difficultyKey;
+    return /*#__PURE__*/React.createElement("button", {
+      key: key,
+      onClick: () => setDifficultyKey(key),
+      style: {
+        flex: 1,
+        padding: "10px 6px",
+        borderRadius: 10,
+        cursor: "pointer",
+        textAlign: "center",
+        border: `1.5px solid ${active ? d.badge : C.parchmentLine}`,
+        background: active ? `${d.badge}22` : "transparent",
+        color: active ? d.badge : C.parchmentDark,
         fontFamily: FONT_MONO,
         fontSize: 12,
-        letterSpacing: 1,
-        color: C.brassLight,
-        textTransform: "uppercase",
-        marginBottom: 8
-      },
-      children: "Come ti muovi?"
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
+        fontWeight: 600,
+        letterSpacing: 0.5
+      }
+    }, d.label);
+  }))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.teal,
+      textTransform: "uppercase",
+      marginBottom: 8,
+      display: "flex",
+      alignItems: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(Clock, {
+    size: 13
+  }), " Tempo a disposizione"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      marginBottom: 22,
+      flexWrap: "wrap"
+    }
+  }, TIME_OPTIONS.map(opt => {
+    const active = opt.key === timeKey;
+    return /*#__PURE__*/React.createElement("button", {
+      key: opt.key,
+      onClick: () => setTimeKey(opt.key),
       style: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 10,
-        marginBottom: 22
-      },
-      children: Object.entries(TRANSPORT).map(([key, t]) => {
-        const Icon = t.icon;
-        const active = key === transportKey;
-        return /*#__PURE__*/_jsxDEV("button", {
-          onClick: () => setTransportKey(key),
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 6,
-            padding: "14px 8px",
-            borderRadius: 12,
-            cursor: "pointer",
-            border: `1.5px solid ${active ? C.brassLight : C.parchmentLine}`,
-            background: active ? "rgba(217,174,102,0.15)" : "transparent",
-            color: C.parchment
-          },
-          children: [/*#__PURE__*/_jsxDEV(Icon, {
-            size: 22,
-            color: active ? C.brassLight : C.parchmentDark
-          }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontSize: 13,
-              fontWeight: 500
-            },
-            children: t.label
-          }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontSize: 10,
-              color: C.parchmentDark,
-              textAlign: "center"
-            },
-            children: t.note
-          }, void 0, false)]
-        }, key, true);
-      })
-    }, void 0, false), mode === "gioco" ? /*#__PURE__*/_jsxDEV(_Fragment, {
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 12,
-          letterSpacing: 1,
-          color: C.brassLight,
-          textTransform: "uppercase",
-          marginBottom: 8
-        },
-        children: "Difficoltà"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          gap: 8,
-          marginBottom: 26
-        },
-        children: Object.entries(DIFFICULTY).map(([key, d]) => {
-          const active = key === difficultyKey;
-          return /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setDifficultyKey(key),
-            style: {
-              flex: 1,
-              padding: "10px 6px",
-              borderRadius: 10,
-              cursor: "pointer",
-              textAlign: "center",
-              border: `1.5px solid ${active ? d.badge : C.parchmentLine}`,
-              background: active ? `${d.badge}22` : "transparent",
-              color: active ? d.badge : C.parchmentDark,
-              fontFamily: FONT_MONO,
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: 0.5
-            },
-            children: d.label
-          }, key, false);
-        })
-      }, void 0, false)]
-    }, void 0, true) : /*#__PURE__*/_jsxDEV(_Fragment, {
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 12,
-          letterSpacing: 1,
-          color: C.teal,
-          textTransform: "uppercase",
-          marginBottom: 8,
-          display: "flex",
-          alignItems: "center",
-          gap: 6
-        },
-        children: [/*#__PURE__*/_jsxDEV(Clock, {
-          size: 13
-        }, void 0, false), " Tempo a disposizione"]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          gap: 6,
-          marginBottom: 22,
-          flexWrap: "wrap"
-        },
-        children: TIME_OPTIONS.map(opt => {
-          const active = opt.key === timeKey;
-          return /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setTimeKey(opt.key),
-            style: {
-              flex: "1 1 30%",
-              padding: "9px 6px",
-              borderRadius: 10,
-              cursor: "pointer",
-              textAlign: "center",
-              border: `1.5px solid ${active ? C.teal : C.parchmentLine}`,
-              background: active ? "rgba(62,107,107,0.2)" : "transparent",
-              color: active ? C.teal : C.parchmentDark,
-              fontFamily: FONT_MONO,
-              fontSize: 11,
-              fontWeight: 600
-            },
-            children: opt.label
-          }, opt.key, false);
-        })
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 12,
-          letterSpacing: 1,
-          color: C.teal,
-          textTransform: "uppercase",
-          marginBottom: 8
-        },
-        children: "Tipo di turismo"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 10,
-          marginBottom: 26
-        },
-        children: Object.entries(TOURISM_TYPES).map(([key, t]) => {
-          const Icon = t.icon;
-          const active = key === tourismTypeKey;
-          return /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setTourismTypeKey(key),
-            style: {
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 6,
-              padding: "12px 8px",
-              borderRadius: 12,
-              cursor: "pointer",
-              border: `1.5px solid ${active ? C.teal : C.parchmentLine}`,
-              background: active ? "rgba(62,107,107,0.18)" : "transparent",
-              color: C.parchment
-            },
-            children: [/*#__PURE__*/_jsxDEV(Icon, {
-              size: 20,
-              color: active ? C.teal : C.parchmentDark
-            }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-              style: {
-                fontSize: 12,
-                fontWeight: 500,
-                textAlign: "center"
-              },
-              children: t.label
-            }, void 0, false)]
-          }, key, true);
-        })
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        marginBottom: 16
-      },
-      children: [positionSource === "manual" && manualLabel ? /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 8,
-          background: "rgba(62,107,107,0.12)",
-          border: `1px solid ${C.teal}`,
-          borderRadius: 10,
-          padding: "9px 12px",
-          fontSize: 12,
-          color: C.teal
-        },
-        children: [/*#__PURE__*/_jsxDEV("span", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            overflow: "hidden"
-          },
-          children: [/*#__PURE__*/_jsxDEV(MapPin, {
-            size: 13,
-            style: {
-              flexShrink: 0
-            }
-          }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap"
-            },
-            children: manualLabel
-          }, void 0, false)]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-          onClick: () => setShowManualLocation(true),
-          style: {
-            background: "none",
-            border: "none",
-            color: C.teal,
-            textDecoration: "underline",
-            cursor: "pointer",
-            fontSize: 12,
-            flexShrink: 0
-          },
-          children: "cambia"
-        }, void 0, false)]
-      }, void 0, true) : /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setShowManualLocation(v => !v),
-        style: {
-          background: "none",
-          border: "none",
-          color: C.parchmentDark,
-          fontSize: 12,
-          textDecoration: "underline",
-          cursor: "pointer",
-          padding: 0
-        },
-        children: "Il GPS non funziona qui? Inserisci una posizione manualmente"
-      }, void 0, false), showManualLocation && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 10
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            gap: 8
-          },
-          children: [/*#__PURE__*/_jsxDEV("input", {
-            value: manualQuery,
-            onChange: e => setManualQuery(e.target.value),
-            onKeyDown: e => {
-              if (e.key === "Enter") onManualSearch();
-            },
-            placeholder: "Città, indirizzo o monumento…",
-            style: {
-              flex: 1,
-              padding: "10px 12px",
-              borderRadius: 10,
-              border: `1.5px solid ${C.parchmentLine}`,
-              background: C.parchment,
-              color: C.ink,
-              fontSize: 13,
-              fontFamily: FONT_BODY
-            }
-          }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-            onClick: onManualSearch,
-            disabled: geocoding || !manualQuery.trim(),
-            style: {
-              padding: "0 14px",
-              borderRadius: 10,
-              border: "none",
-              background: C.teal,
-              color: C.parchment,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              opacity: geocoding || !manualQuery.trim() ? 0.6 : 1
-            },
-            children: geocoding ? /*#__PURE__*/_jsxDEV(Loader2, {
-              size: 16,
-              style: {
-                animation: "spin 1s linear infinite"
-              }
-            }, void 0, false) : /*#__PURE__*/_jsxDEV(Search, {
-              size: 16
-            }, void 0, false)
-          }, void 0, false)]
-        }, void 0, true), geocodeError && /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            marginTop: 6,
-            fontSize: 12,
-            color: "#E8B4A6"
-          },
-          children: geocodeError
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            margin: "12px 0"
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              flex: 1,
-              height: 1,
-              background: C.parchmentLine,
-              opacity: 0.4
-            }
-          }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontSize: 10,
-              color: C.parchmentDark,
-              fontFamily: FONT_MONO,
-              textTransform: "uppercase"
-            },
-            children: "oppure coordinate"
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              flex: 1,
-              height: 1,
-              background: C.parchmentLine,
-              opacity: 0.4
-            }
-          }, void 0, false)]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            gap: 8
-          },
-          children: [/*#__PURE__*/_jsxDEV("input", {
-            value: manualLat,
-            onChange: e => setManualLat(e.target.value),
-            placeholder: "Latitudine, es. 45.4642",
-            inputMode: "decimal",
-            style: {
-              flex: 1,
-              padding: "10px 12px",
-              borderRadius: 10,
-              border: `1.5px solid ${C.parchmentLine}`,
-              background: C.parchment,
-              color: C.ink,
-              fontSize: 13,
-              fontFamily: FONT_MONO
-            }
-          }, void 0, false), /*#__PURE__*/_jsxDEV("input", {
-            value: manualLon,
-            onChange: e => setManualLon(e.target.value),
-            placeholder: "Longitudine, es. 9.1900",
-            inputMode: "decimal",
-            style: {
-              flex: 1,
-              padding: "10px 12px",
-              borderRadius: 10,
-              border: `1.5px solid ${C.parchmentLine}`,
-              background: C.parchment,
-              color: C.ink,
-              fontSize: 13,
-              fontFamily: FONT_MONO
-            }
-          }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-            onClick: onManualCoords,
-            disabled: !manualLat || !manualLon,
-            style: {
-              padding: "0 14px",
-              borderRadius: 10,
-              border: "none",
-              background: C.brass,
-              color: C.ink,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              opacity: !manualLat || !manualLon ? 0.6 : 1
-            },
-            children: /*#__PURE__*/_jsxDEV(MapPin, {
-              size: 16
-            }, void 0, false)
-          }, void 0, false)]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("p", {
-          style: {
-            fontSize: 11,
-            color: C.parchmentDark,
-            marginTop: 6
-          },
-          children: "Trovi le coordinate di un luogo cercandolo su Google Maps e tenendo premuto sul punto: appaiono in basso, pronte da incollare qui."
-        }, void 0, false)]
-      }, void 0, true)]
-    }, void 0, true), error && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        background: "rgba(166,80,58,0.15)",
-        border: `1px solid ${C.rust}`,
-        color: "#E8B4A6",
+        flex: "1 1 30%",
+        padding: "9px 6px",
         borderRadius: 10,
-        padding: "10px 12px",
-        fontSize: 13,
-        marginBottom: 16
-      },
-      children: error
-    }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-      onClick: onStart,
-      disabled: loading,
-      style: {
-        width: "100%",
-        padding: "15px",
-        borderRadius: 12,
-        border: "none",
-        cursor: loading ? "default" : "pointer",
-        background: loading ? C.parchmentLine : kidsMode ? C.coral : mode === "gioco" ? C.brass : C.teal,
-        color: kidsMode ? C.parchment : mode === "gioco" ? C.ink : C.parchment,
-        fontFamily: FONT_DISPLAY,
-        fontWeight: 700,
-        fontSize: 16,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        opacity: loading ? 0.6 : 1
-      },
-      children: [loading ? /*#__PURE__*/_jsxDEV(Loader2, {
-        size: 18,
-        style: {
-          animation: "spin 1s linear infinite"
-        }
-      }, void 0, false) : kidsMode ? /*#__PURE__*/_jsxDEV(PartyPopper, {
-        size: 18
-      }, void 0, false) : /*#__PURE__*/_jsxDEV(MapPin, {
-        size: 18
-      }, void 0, false), loading ? "Consulto la mappa dei dintorni…" : kidsMode ? "Si parte alla caccia al tesoro!" : mode === "gioco" ? "Parti in spedizione" : "Parti alla scoperta"]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-      onClick: onShare,
-      style: {
-        width: "100%",
-        marginTop: 12,
-        padding: "11px",
-        borderRadius: 12,
-        border: `1.5px solid ${C.parchmentLine}`,
-        background: "transparent",
-        color: C.parchmentDark,
-        fontFamily: FONT_BODY,
-        fontSize: 13,
         cursor: "pointer",
+        textAlign: "center",
+        border: `1.5px solid ${active ? C.teal : C.parchmentLine}`,
+        background: active ? "rgba(62,107,107,0.2)" : "transparent",
+        color: active ? C.teal : C.parchmentDark,
+        fontFamily: FONT_MONO,
+        fontSize: 11,
+        fontWeight: 600
+      }
+    }, opt.label);
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      letterSpacing: 1,
+      color: C.teal,
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Tipo di turismo"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: 10,
+      marginBottom: 26
+    }
+  }, Object.entries(TOURISM_TYPES).map(([key, t]) => {
+    const Icon = t.icon;
+    const active = key === tourismTypeKey;
+    return /*#__PURE__*/React.createElement("button", {
+      key: key,
+      onClick: () => setTourismTypeKey(key),
+      style: {
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        gap: 6
-      },
-      children: [shareCopied ? /*#__PURE__*/_jsxDEV(Check, {
-        size: 15,
-        color: C.sage
-      }, void 0, false) : /*#__PURE__*/_jsxDEV(Share2, {
-        size: 15
-      }, void 0, false), shareCopied ? "Link copiato!" : "Invita un amico a esplorare con te"]
-    }, void 0, true)]
-  }, void 0, true);
+        gap: 6,
+        padding: "12px 8px",
+        borderRadius: 12,
+        cursor: "pointer",
+        border: `1.5px solid ${active ? C.teal : C.parchmentLine}`,
+        background: active ? "rgba(62,107,107,0.18)" : "transparent",
+        color: C.parchment
+      }
+    }, /*#__PURE__*/React.createElement(Icon, {
+      size: 20,
+      color: active ? C.teal : C.parchmentDark
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        fontWeight: 500,
+        textAlign: "center"
+      }
+    }, t.label));
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 16
+    }
+  }, positionSource === "manual" && manualLabel ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 8,
+      background: "rgba(62,107,107,0.12)",
+      border: `1px solid ${C.teal}`,
+      borderRadius: 10,
+      padding: "9px 12px",
+      fontSize: 12,
+      color: C.teal
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React.createElement(MapPin, {
+    size: 13,
+    style: {
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    }
+  }, manualLabel)), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setShowManualLocation(true),
+    style: {
+      background: "none",
+      border: "none",
+      color: C.teal,
+      textDecoration: "underline",
+      cursor: "pointer",
+      fontSize: 12,
+      flexShrink: 0
+    }
+  }, "cambia")) : /*#__PURE__*/React.createElement("button", {
+    onClick: () => setShowManualLocation(v => !v),
+    style: {
+      background: "none",
+      border: "none",
+      color: C.parchmentDark,
+      fontSize: 12,
+      textDecoration: "underline",
+      cursor: "pointer",
+      padding: 0
+    }
+  }, "Il GPS non funziona qui? Inserisci una posizione manualmente"), showManualLocation && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    value: manualQuery,
+    onChange: e => setManualQuery(e.target.value),
+    onKeyDown: e => {
+      if (e.key === "Enter") onManualSearch();
+    },
+    placeholder: "Città, indirizzo o monumento…",
+    style: {
+      flex: 1,
+      padding: "10px 12px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchment,
+      color: C.ink,
+      fontSize: 13,
+      fontFamily: FONT_BODY
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: onManualSearch,
+    disabled: geocoding || !manualQuery.trim(),
+    style: {
+      padding: "0 14px",
+      borderRadius: 10,
+      border: "none",
+      background: C.teal,
+      color: C.parchment,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      opacity: geocoding || !manualQuery.trim() ? 0.6 : 1
+    }
+  }, geocoding ? /*#__PURE__*/React.createElement(Loader2, {
+    size: 16,
+    style: {
+      animation: "spin 1s linear infinite"
+    }
+  }) : /*#__PURE__*/React.createElement(Search, {
+    size: 16
+  }))), geocodeError && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 6,
+      fontSize: 12,
+      color: "#E8B4A6"
+    }
+  }, geocodeError), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      margin: "12px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      height: 1,
+      background: C.parchmentLine,
+      opacity: 0.4
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: C.parchmentDark,
+      fontFamily: FONT_MONO,
+      textTransform: "uppercase"
+    }
+  }, "oppure coordinate"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      height: 1,
+      background: C.parchmentLine,
+      opacity: 0.4
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    value: manualLat,
+    onChange: e => setManualLat(e.target.value),
+    placeholder: "Latitudine, es. 45.4642",
+    inputMode: "decimal",
+    style: {
+      flex: 1,
+      padding: "10px 12px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchment,
+      color: C.ink,
+      fontSize: 13,
+      fontFamily: FONT_MONO
+    }
+  }), /*#__PURE__*/React.createElement("input", {
+    value: manualLon,
+    onChange: e => setManualLon(e.target.value),
+    placeholder: "Longitudine, es. 9.1900",
+    inputMode: "decimal",
+    style: {
+      flex: 1,
+      padding: "10px 12px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchment,
+      color: C.ink,
+      fontSize: 13,
+      fontFamily: FONT_MONO
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: onManualCoords,
+    disabled: !manualLat || !manualLon,
+    style: {
+      padding: "0 14px",
+      borderRadius: 10,
+      border: "none",
+      background: C.brass,
+      color: C.ink,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      opacity: !manualLat || !manualLon ? 0.6 : 1
+    }
+  }, /*#__PURE__*/React.createElement(MapPin, {
+    size: 16
+  }))), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 11,
+      color: C.parchmentDark,
+      marginTop: 6
+    }
+  }, "Trovi le coordinate di un luogo cercandolo su Google Maps e tenendo premuto sul punto: appaiono in basso, pronte da incollare qui."))), error && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "rgba(166,80,58,0.15)",
+      border: `1px solid ${C.rust}`,
+      color: "#E8B4A6",
+      borderRadius: 10,
+      padding: "10px 12px",
+      fontSize: 13,
+      marginBottom: 16
+    }
+  }, error), /*#__PURE__*/React.createElement("button", {
+    onClick: onStart,
+    disabled: loading,
+    style: {
+      width: "100%",
+      padding: "15px",
+      borderRadius: 12,
+      border: "none",
+      cursor: loading ? "default" : "pointer",
+      background: loading ? C.parchmentLine : kidsMode ? C.coral : mode === "gioco" ? C.brass : C.teal,
+      color: kidsMode ? C.parchment : mode === "gioco" ? C.ink : C.parchment,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700,
+      fontSize: 16,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      opacity: loading ? 0.6 : 1
+    }
+  }, loading ? /*#__PURE__*/React.createElement(Loader2, {
+    size: 18,
+    style: {
+      animation: "spin 1s linear infinite"
+    }
+  }) : kidsMode ? /*#__PURE__*/React.createElement(PartyPopper, {
+    size: 18
+  }) : /*#__PURE__*/React.createElement(MapPin, {
+    size: 18
+  }), loading ? "Consulto la mappa dei dintorni…" : kidsMode ? "Si parte alla caccia al tesoro!" : mode === "gioco" ? "Parti in spedizione" : "Parti alla scoperta"), /*#__PURE__*/React.createElement("button", {
+    onClick: onShare,
+    style: {
+      width: "100%",
+      marginTop: 12,
+      padding: "11px",
+      borderRadius: 12,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: "transparent",
+      color: C.parchmentDark,
+      fontFamily: FONT_BODY,
+      fontSize: 13,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6
+    }
+  }, shareCopied ? /*#__PURE__*/React.createElement(Check, {
+    size: 15,
+    color: C.sage
+  }) : /*#__PURE__*/React.createElement(Share2, {
+    size: 15
+  }), shareCopied ? "Link copiato!" : "Invita un amico a esplorare con te"));
 }
 
 /* ---------------------------------------------------------------
@@ -2251,140 +2158,127 @@ function ListScreen({
 }) {
   const foundCount = targets.filter(t => t.found).length;
   const accent = kidsMode ? C.coral : mode === "gioco" ? C.brassLight : C.teal;
-  return /*#__PURE__*/_jsxDEV("div", {
-    className: "rise",
-    children: [/*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rise"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "baseline",
+      margin: "14px 0 6px"
+    }
+  }, /*#__PURE__*/React.createElement("h2", {
+    style: {
+      fontFamily: FONT_DISPLAY,
+      fontSize: 20,
+      fontWeight: 700
+    }
+  }, kidsMode ? "I tesori da trovare" : mode === "gioco" ? "I tuoi obiettivi" : "Le tue tappe"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 13,
+      color: accent
+    }
+  }, foundCount, "/", targets.length)), kidsMode && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      background: "rgba(226,115,79,0.14)",
+      border: `1px solid ${C.coral}`,
+      borderRadius: 10,
+      padding: "8px 12px",
+      marginBottom: 12,
+      color: C.coral,
+      fontSize: 12
+    }
+  }, /*#__PURE__*/React.createElement(PartyPopper, {
+    size: 14,
+    style: {
+      flexShrink: 0
+    }
+  }), " Esplorate insieme a un adulto!"), locError && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#E8B4A6",
+      marginBottom: 10
+    }
+  }, locError), allFound && /*#__PURE__*/React.createElement("button", {
+    onClick: onSummary,
+    style: {
+      width: "100%",
+      marginBottom: 16,
+      padding: "13px",
+      borderRadius: 12,
+      border: "none",
+      background: mode === "gioco" ? C.moss : C.teal,
+      color: C.parchment,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700,
+      fontSize: 15,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      cursor: "pointer"
+    }
+  }, /*#__PURE__*/React.createElement(Award, {
+    size: 18
+  }), " ", mode === "gioco" ? "Spedizione completata — vedi il riepilogo" : "Giro completato — vedi il riepilogo"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 12
+    }
+  }, targets.map(t => {
+    const dist = position ? haversine(position.lat, position.lon, t.lat, t.lon) : null;
+    return /*#__PURE__*/React.createElement("button", {
+      key: t.id,
+      onClick: () => onOpen(t.id),
+      style: {
+        textAlign: "left",
+        background: t.found ? "rgba(143,166,136,0.12)" : C.parchment,
+        border: `1.5px solid ${t.found ? C.sage : C.parchmentLine}`,
+        borderRadius: 14,
+        padding: 16,
+        cursor: "pointer"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "baseline",
-        margin: "14px 0 6px"
-      },
-      children: [/*#__PURE__*/_jsxDEV("h2", {
-        style: {
-          fontFamily: FONT_DISPLAY,
-          fontSize: 20,
-          fontWeight: 700
-        },
-        children: kidsMode ? "I tesori da trovare" : mode === "gioco" ? "I tuoi obiettivi" : "Le tue tappe"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 13,
-          color: accent
-        },
-        children: [foundCount, "/", targets.length]
-      }, void 0, true)]
-    }, void 0, true), kidsMode && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        display: "flex",
         alignItems: "center",
-        gap: 6,
-        background: "rgba(226,115,79,0.14)",
-        border: `1px solid ${C.coral}`,
-        borderRadius: 10,
-        padding: "8px 12px",
-        marginBottom: 12,
-        color: C.coral,
-        fontSize: 12
-      },
-      children: [/*#__PURE__*/_jsxDEV(PartyPopper, {
-        size: 14,
-        style: {
-          flexShrink: 0
-        }
-      }, void 0, false), " Esplorate insieme a un adulto!"]
-    }, void 0, true), locError && /*#__PURE__*/_jsxDEV("div", {
+        marginBottom: 6
+      }
+    }, /*#__PURE__*/React.createElement(StampBadge, {
+      color: t.found ? C.sage : kidsMode ? C.coral : mode === "gioco" ? DIFFICULTY[difficultyKey].badge : C.teal
+    }, t.found ? kidsMode ? "Trovato!" : mode === "gioco" ? "Completato" : "Scoperta" : kidsMode ? "Da cercare" : mode === "gioco" ? "Da scoprire" : "Da visitare"), /*#__PURE__*/React.createElement("span", {
       style: {
+        fontFamily: FONT_MONO,
         fontSize: 12,
-        color: "#E8B4A6",
-        marginBottom: 10
-      },
-      children: locError
-    }, void 0, false), allFound && /*#__PURE__*/_jsxDEV("button", {
-      onClick: onSummary,
+        color: t.found ? C.moss : C.ink70
+      }
+    }, fmtDist(dist))), /*#__PURE__*/React.createElement("p", {
       style: {
-        width: "100%",
-        marginBottom: 16,
-        padding: "13px",
-        borderRadius: 12,
-        border: "none",
-        background: mode === "gioco" ? C.moss : C.teal,
-        color: C.parchment,
-        fontFamily: FONT_DISPLAY,
-        fontWeight: 700,
-        fontSize: 15,
+        color: t.found ? C.moss : C.ink,
+        fontSize: 14,
+        lineHeight: 1.5,
+        margin: 0,
+        fontStyle: t.found ? "normal" : "italic"
+      }
+    }, t.found ? t.name : t.clue), !t.found && /*#__PURE__*/React.createElement("div", {
+      style: {
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        cursor: "pointer"
-      },
-      children: [/*#__PURE__*/_jsxDEV(Award, {
-        size: 18
-      }, void 0, false), " ", mode === "gioco" ? "Spedizione completata — vedi il riepilogo" : "Giro completato — vedi il riepilogo"]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        gap: 12
-      },
-      children: targets.map(t => {
-        const dist = position ? haversine(position.lat, position.lon, t.lat, t.lon) : null;
-        return /*#__PURE__*/_jsxDEV("button", {
-          onClick: () => onOpen(t.id),
-          style: {
-            textAlign: "left",
-            background: t.found ? "rgba(143,166,136,0.12)" : C.parchment,
-            border: `1.5px solid ${t.found ? C.sage : C.parchmentLine}`,
-            borderRadius: 14,
-            padding: 16,
-            cursor: "pointer"
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 6
-            },
-            children: [/*#__PURE__*/_jsxDEV(StampBadge, {
-              color: t.found ? C.sage : kidsMode ? C.coral : mode === "gioco" ? DIFFICULTY[difficultyKey].badge : C.teal,
-              children: t.found ? kidsMode ? "Trovato!" : mode === "gioco" ? "Completato" : "Scoperta" : kidsMode ? "Da cercare" : mode === "gioco" ? "Da scoprire" : "Da visitare"
-            }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-              style: {
-                fontFamily: FONT_MONO,
-                fontSize: 12,
-                color: t.found ? C.moss : C.ink70
-              },
-              children: fmtDist(dist)
-            }, void 0, false)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("p", {
-            style: {
-              color: t.found ? C.moss : C.ink,
-              fontSize: 14,
-              lineHeight: 1.5,
-              margin: 0,
-              fontStyle: t.found ? "normal" : "italic"
-            },
-            children: t.found ? t.name : t.clue
-          }, void 0, false), !t.found && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              marginTop: 8,
-              color: C.ink70,
-              fontSize: 11
-            },
-            children: [/*#__PURE__*/_jsxDEV(Lock, {
-              size: 12
-            }, void 0, false), " nome nascosto finché non lo trovi"]
-          }, void 0, true)]
-        }, t.id, true);
-      })
-    }, void 0, false)]
-  }, void 0, true);
+        gap: 4,
+        marginTop: 8,
+        color: C.ink70,
+        fontSize: 11
+      }
+    }, /*#__PURE__*/React.createElement(Lock, {
+      size: 12
+    }), " nome nascosto finché non lo trovi"));
+  })));
 }
 
 /* ---------------------------------------------------------------
@@ -2405,253 +2299,230 @@ function ActiveScreen({
   locError
 }) {
   const accent = kidsMode ? C.coral : mode === "gioco" ? C.brass : C.teal;
-  return /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "rise",
     style: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       paddingTop: 8
-    },
-    children: [kidsMode && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        background: "rgba(226,115,79,0.14)",
-        border: `1px solid ${C.coral}`,
-        borderRadius: 10,
-        padding: "8px 12px",
-        marginBottom: 14,
-        color: C.coral,
-        fontSize: 12,
-        width: "100%"
-      },
-      children: [/*#__PURE__*/_jsxDEV(PartyPopper, {
-        size: 14,
-        style: {
-          flexShrink: 0
-        }
-      }, void 0, false), " Caccia al tesoro in famiglia!"]
-    }, void 0, true), /*#__PURE__*/_jsxDEV(CompassDial, {
-      bearingDeg: bearingDeg
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontFamily: FONT_MONO,
-        fontSize: 12,
-        color: accent,
-        marginTop: 8
-      },
-      children: dist != null ? `${compassLabel(bearingDeg)} · ${fmtDist(dist)}` : "in attesa del GPS…"
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        marginTop: 20,
-        background: C.parchment,
-        borderRadius: 16,
-        padding: 20,
-        width: "100%",
-        border: `1.5px solid ${C.parchmentLine}`
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontFamily: FONT_MONO,
-          fontSize: 11,
-          letterSpacing: 1,
-          color: C.ink70,
-          textTransform: "uppercase",
-          marginBottom: 8
-        },
-        children: "Indizio"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("p", {
-        style: {
-          color: C.ink,
-          fontFamily: FONT_DISPLAY,
-          fontSize: 17,
-          lineHeight: 1.5,
-          fontStyle: "italic",
-          margin: 0
-        },
-        children: target.found ? target.name : target.clue
-      }, void 0, false)]
-    }, void 0, true), locError && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontSize: 12,
-        color: "#E8B4A6",
-        marginTop: 12,
-        textAlign: "center"
-      },
-      children: locError
-    }, void 0, false), target.found ? /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        marginTop: 22,
-        textAlign: "center",
-        width: "100%"
-      },
-      children: [/*#__PURE__*/_jsxDEV("img", {
-        src: target.photo,
-        alt: target.name,
-        style: {
-          width: 160,
-          height: 160,
-          objectFit: "cover",
-          borderRadius: 12,
-          border: `2px solid ${kidsMode ? C.coral : mode === "gioco" ? C.moss : C.teal}`
-        }
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 10,
-          color: kidsMode ? C.coral : mode === "gioco" ? C.sage : C.teal,
-          fontFamily: FONT_MONO,
-          fontSize: 13,
-          display: "flex",
-          alignItems: "center",
-          gap: 6,
-          justifyContent: "center"
-        },
-        children: [kidsMode ? /*#__PURE__*/_jsxDEV(PartyPopper, {
-          size: 16
-        }, void 0, false) : /*#__PURE__*/_jsxDEV(Check, {
-          size: 16
-        }, void 0, false), " ", kidsMode ? "Tesoro trovato!" : mode === "gioco" ? "Obiettivo raggiunto" : "Tappa scoperta"]
-      }, void 0, true), mode === "turismo" && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 18,
-          background: C.parchment,
-          borderRadius: 14,
-          padding: 16,
-          textAlign: "left",
-          border: `1.5px solid ${C.parchmentLine}`
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            marginBottom: 8,
-            color: C.teal
-          },
-          children: [/*#__PURE__*/_jsxDEV(Info, {
-            size: 15
-          }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontFamily: FONT_MONO,
-              fontSize: 11,
-              letterSpacing: 1,
-              textTransform: "uppercase"
-            },
-            children: "Da sapere"
-          }, void 0, false)]
-        }, void 0, true), loadingInfo && !target.info && /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            color: C.ink70,
-            fontSize: 13
-          },
-          children: [/*#__PURE__*/_jsxDEV(Loader2, {
-            size: 14,
-            style: {
-              animation: "spin 1s linear infinite"
-            }
-          }, void 0, false), " Recupero informazioni…"]
-        }, void 0, true), target.info && /*#__PURE__*/_jsxDEV(_Fragment, {
-          children: [/*#__PURE__*/_jsxDEV("p", {
-            style: {
-              color: C.ink,
-              fontSize: 14,
-              lineHeight: 1.55,
-              margin: 0
-            },
-            children: target.info.text
-          }, void 0, false), target.info.source === "wikipedia" && target.info.url && /*#__PURE__*/_jsxDEV("a", {
-            href: target.info.url,
-            target: "_blank",
-            rel: "noreferrer",
-            style: {
-              marginTop: 10,
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 4,
-              color: C.teal,
-              fontSize: 12,
-              fontFamily: FONT_MONO,
-              textDecoration: "none"
-            },
-            children: ["Fonte: Wikipedia ", /*#__PURE__*/_jsxDEV(ExternalLink, {
-              size: 11
-            }, void 0, false)]
-          }, void 0, true), target.info.source === "ai" && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              marginTop: 10,
-              fontSize: 11,
-              color: C.ink70,
-              fontStyle: "italic"
-            },
-            children: "Scheda generata automaticamente"
-          }, void 0, false)]
-        }, void 0, true)]
-      }, void 0, true)]
-    }, void 0, true) : /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        marginTop: 26,
-        width: "100%"
-      },
-      children: [/*#__PURE__*/_jsxDEV("button", {
-        onClick: onPhoto,
-        disabled: !canPhotograph || verifying,
-        style: {
-          width: "100%",
-          padding: "15px",
-          borderRadius: 12,
-          border: "none",
-          background: canPhotograph ? accent : C.parchmentLine,
-          color: kidsMode ? C.parchment : mode === "gioco" ? C.ink : C.parchment,
-          fontFamily: FONT_DISPLAY,
-          fontWeight: 700,
-          fontSize: 15,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 8,
-          cursor: canPhotograph && !verifying ? "pointer" : "default",
-          opacity: verifying ? 0.7 : 1
-        },
-        children: [verifying ? /*#__PURE__*/_jsxDEV(Loader2, {
-          size: 18,
-          style: {
-            animation: "spin 1s linear infinite"
-          }
-        }, void 0, false) : canPhotograph ? /*#__PURE__*/_jsxDEV(Camera, {
-          size: 18
-        }, void 0, false) : /*#__PURE__*/_jsxDEV(Lock, {
-          size: 18
-        }, void 0, false), verifying ? "Verifico la foto…" : canPhotograph ? kidsMode ? "Scatta la foto del tesoro!" : "Scatta la foto" : `Avvicinati a meno di ${unlock} m`]
-      }, void 0, true), verifyResult && !verifyResult.trovato && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 12,
-          background: "rgba(166,80,58,0.15)",
-          border: `1px solid ${C.rust}`,
-          color: "#E8B4A6",
-          borderRadius: 10,
-          padding: "10px 12px",
-          fontSize: 13,
-          display: "flex",
-          gap: 8,
-          alignItems: "flex-start"
-        },
-        children: [/*#__PURE__*/_jsxDEV(X, {
-          size: 16,
-          style: {
-            flexShrink: 0,
-            marginTop: 1
-          }
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          children: verifyResult.messaggio || "Non sembra essere il posto giusto. Riprova."
-        }, void 0, false)]
-      }, void 0, true)]
-    }, void 0, true)]
-  }, void 0, true);
+    }
+  }, kidsMode && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      background: "rgba(226,115,79,0.14)",
+      border: `1px solid ${C.coral}`,
+      borderRadius: 10,
+      padding: "8px 12px",
+      marginBottom: 14,
+      color: C.coral,
+      fontSize: 12,
+      width: "100%"
+    }
+  }, /*#__PURE__*/React.createElement(PartyPopper, {
+    size: 14,
+    style: {
+      flexShrink: 0
+    }
+  }), " Caccia al tesoro in famiglia!"), /*#__PURE__*/React.createElement(CompassDial, {
+    bearingDeg: bearingDeg
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 12,
+      color: accent,
+      marginTop: 8
+    }
+  }, dist != null ? `${compassLabel(bearingDeg)} · ${fmtDist(dist)}` : "in attesa del GPS…"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 20,
+      background: C.parchment,
+      borderRadius: 16,
+      padding: 20,
+      width: "100%",
+      border: `1.5px solid ${C.parchmentLine}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 11,
+      letterSpacing: 1,
+      color: C.ink70,
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Indizio"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.ink,
+      fontFamily: FONT_DISPLAY,
+      fontSize: 17,
+      lineHeight: 1.5,
+      fontStyle: "italic",
+      margin: 0
+    }
+  }, target.found ? target.name : target.clue)), locError && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#E8B4A6",
+      marginTop: 12,
+      textAlign: "center"
+    }
+  }, locError), target.found ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 22,
+      textAlign: "center",
+      width: "100%"
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: target.photo,
+    alt: target.name,
+    style: {
+      width: 160,
+      height: 160,
+      objectFit: "cover",
+      borderRadius: 12,
+      border: `2px solid ${kidsMode ? C.coral : mode === "gioco" ? C.moss : C.teal}`
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10,
+      color: kidsMode ? C.coral : mode === "gioco" ? C.sage : C.teal,
+      fontFamily: FONT_MONO,
+      fontSize: 13,
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      justifyContent: "center"
+    }
+  }, kidsMode ? /*#__PURE__*/React.createElement(PartyPopper, {
+    size: 16
+  }) : /*#__PURE__*/React.createElement(Check, {
+    size: 16
+  }), " ", kidsMode ? "Tesoro trovato!" : mode === "gioco" ? "Obiettivo raggiunto" : "Tappa scoperta"), mode === "turismo" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 18,
+      background: C.parchment,
+      borderRadius: 14,
+      padding: 16,
+      textAlign: "left",
+      border: `1.5px solid ${C.parchmentLine}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      marginBottom: 8,
+      color: C.teal
+    }
+  }, /*#__PURE__*/React.createElement(Info, {
+    size: 15
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 11,
+      letterSpacing: 1,
+      textTransform: "uppercase"
+    }
+  }, "Da sapere")), loadingInfo && !target.info && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      color: C.ink70,
+      fontSize: 13
+    }
+  }, /*#__PURE__*/React.createElement(Loader2, {
+    size: 14,
+    style: {
+      animation: "spin 1s linear infinite"
+    }
+  }), " Recupero informazioni…"), target.info && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.ink,
+      fontSize: 14,
+      lineHeight: 1.55,
+      margin: 0
+    }
+  }, target.info.text), target.info.source === "wikipedia" && target.info.url && /*#__PURE__*/React.createElement("a", {
+    href: target.info.url,
+    target: "_blank",
+    rel: "noreferrer",
+    style: {
+      marginTop: 10,
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 4,
+      color: C.teal,
+      fontSize: 12,
+      fontFamily: FONT_MONO,
+      textDecoration: "none"
+    }
+  }, "Fonte: Wikipedia ", /*#__PURE__*/React.createElement(ExternalLink, {
+    size: 11
+  })), target.info.source === "ai" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10,
+      fontSize: 11,
+      color: C.ink70,
+      fontStyle: "italic"
+    }
+  }, "Scheda generata automaticamente")))) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 26,
+      width: "100%"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: onPhoto,
+    disabled: !canPhotograph || verifying,
+    style: {
+      width: "100%",
+      padding: "15px",
+      borderRadius: 12,
+      border: "none",
+      background: canPhotograph ? accent : C.parchmentLine,
+      color: kidsMode ? C.parchment : mode === "gioco" ? C.ink : C.parchment,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700,
+      fontSize: 15,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      cursor: canPhotograph && !verifying ? "pointer" : "default",
+      opacity: verifying ? 0.7 : 1
+    }
+  }, verifying ? /*#__PURE__*/React.createElement(Loader2, {
+    size: 18,
+    style: {
+      animation: "spin 1s linear infinite"
+    }
+  }) : canPhotograph ? /*#__PURE__*/React.createElement(Camera, {
+    size: 18
+  }) : /*#__PURE__*/React.createElement(Lock, {
+    size: 18
+  }), verifying ? "Verifico la foto…" : canPhotograph ? kidsMode ? "Scatta la foto del tesoro!" : "Scatta la foto" : `Avvicinati a meno di ${unlock} m`), verifyResult && !verifyResult.trovato && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 12,
+      background: "rgba(166,80,58,0.15)",
+      border: `1px solid ${C.rust}`,
+      color: "#E8B4A6",
+      borderRadius: 10,
+      padding: "10px 12px",
+      fontSize: 13,
+      display: "flex",
+      gap: 8,
+      alignItems: "flex-start"
+    }
+  }, /*#__PURE__*/React.createElement(X, {
+    size: 16,
+    style: {
+      flexShrink: 0,
+      marginTop: 1
+    }
+  }), /*#__PURE__*/React.createElement("span", null, verifyResult.messaggio || "Non sembra essere il posto giusto. Riprova."))));
 }
 
 /* ---------------------------------------------------------------
@@ -2672,257 +2543,234 @@ function SummaryScreen({
   feedbackSubmitted,
   onSubmitFeedback
 }) {
-  return /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "rise",
     style: {
       textAlign: "center"
-    },
-    children: [/*#__PURE__*/_jsxDEV(Sparkles, {
-      size: 36,
-      color: mode === "gioco" ? C.brassLight : C.teal,
-      style: {
-        marginTop: 8
-      }
-    }, void 0, false), /*#__PURE__*/_jsxDEV("h2", {
-      style: {
-        fontFamily: FONT_DISPLAY,
-        fontSize: 24,
-        fontWeight: 700,
-        margin: "10px 0 4px"
-      },
-      children: mode === "gioco" ? `Spedizione completata, ${playerName}!` : `Giro completato, ${playerName}!`
-    }, void 0, false), mode === "gioco" ? /*#__PURE__*/_jsxDEV("p", {
-      style: {
-        color: C.parchmentDark,
-        fontSize: 14,
-        marginBottom: 18
-      },
-      children: ["Hai totalizzato ", /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          color: C.brassLight,
-          fontFamily: FONT_MONO
-        },
-        children: score
-      }, void 0, false), " punti."]
-    }, void 0, true) : /*#__PURE__*/_jsxDEV("p", {
-      style: {
-        color: C.parchmentDark,
-        fontSize: 14,
-        marginBottom: 18
-      },
-      children: ["Hai scoperto ", /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          color: C.teal,
-          fontFamily: FONT_MONO
-        },
-        children: targets.length
-      }, void 0, false), " tappe. Ecco il tuo diario di viaggio."]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        gap: 12,
-        marginBottom: 22,
-        textAlign: "left"
-      },
-      children: targets.map(t => /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: C.parchment,
-          borderRadius: 12,
-          padding: 12,
-          border: `1.5px solid ${C.parchmentLine}`,
-          display: "flex",
-          gap: 12
-        },
-        children: [t.photo && /*#__PURE__*/_jsxDEV("img", {
-          src: t.photo,
-          alt: t.name,
-          style: {
-            width: 70,
-            height: 70,
-            objectFit: "cover",
-            borderRadius: 8,
-            flexShrink: 0
-          }
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              color: C.ink,
-              fontSize: 14,
-              fontWeight: 600
-            },
-            children: t.name
-          }, void 0, false), mode === "turismo" && t.info && /*#__PURE__*/_jsxDEV("p", {
-            style: {
-              color: C.ink70,
-              fontSize: 12,
-              lineHeight: 1.4,
-              margin: "4px 0 0"
-            },
-            children: t.info.text
-          }, void 0, false)]
-        }, void 0, true)]
-      }, t.id, true))
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        background: C.parchment,
-        borderRadius: 14,
-        padding: 18,
-        marginBottom: 20,
-        border: `1.5px solid ${C.parchmentLine}`,
-        textAlign: "left"
-      },
-      children: feedbackSubmitted ? /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          textAlign: "center",
-          color: C.moss,
-          fontSize: 14,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 6
-        },
-        children: [/*#__PURE__*/_jsxDEV(Check, {
-          size: 16
-        }, void 0, false), " Grazie del feedback!"]
-      }, void 0, true) : /*#__PURE__*/_jsxDEV(_Fragment, {
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontFamily: FONT_MONO,
-            fontSize: 11,
-            letterSpacing: 1,
-            color: C.ink70,
-            textTransform: "uppercase",
-            marginBottom: 10
-          },
-          children: "Com'è andata?"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            gap: 6,
-            justifyContent: "center",
-            marginBottom: 12
-          },
-          children: [1, 2, 3, 4, 5].map(n => /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setFeedbackRating(n),
-            style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 2
-            },
-            children: /*#__PURE__*/_jsxDEV(Star, {
-              size: 26,
-              color: C.brass,
-              fill: n <= feedbackRating ? C.brass : "transparent"
-            }, void 0, false)
-          }, n, false))
-        }, void 0, false), /*#__PURE__*/_jsxDEV("textarea", {
-          value: feedbackComment,
-          onChange: e => setFeedbackComment(e.target.value),
-          placeholder: "Cosa ti è piaciuto o cosa miglioreresti? (facoltativo)",
-          rows: 2,
-          style: {
-            width: "100%",
-            padding: "10px 12px",
-            borderRadius: 10,
-            border: `1.5px solid ${C.parchmentLine}`,
-            background: C.parchmentDark + "40",
-            color: C.ink,
-            fontSize: 13,
-            fontFamily: FONT_BODY,
-            resize: "none",
-            marginBottom: 10
-          }
-        }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-          onClick: onSubmitFeedback,
-          disabled: feedbackRating === 0 || feedbackSubmitting,
-          style: {
-            width: "100%",
-            padding: "10px",
-            borderRadius: 10,
-            border: "none",
-            background: feedbackRating === 0 ? C.parchmentLine : C.moss,
-            color: C.parchment,
-            fontFamily: FONT_BODY,
-            fontWeight: 600,
-            fontSize: 13,
-            cursor: feedbackRating === 0 ? "default" : "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 6,
-            opacity: feedbackSubmitting ? 0.7 : 1
-          },
-          children: [feedbackSubmitting ? /*#__PURE__*/_jsxDEV(Loader2, {
-            size: 14,
-            style: {
-              animation: "spin 1s linear infinite"
-            }
-          }, void 0, false) : null, feedbackSubmitting ? "Invio…" : "Invia feedback"]
-        }, void 0, true)]
-      }, void 0, true)
-    }, void 0, false), mode === "gioco" ? /*#__PURE__*/_jsxDEV(_Fragment, {
-      children: [/*#__PURE__*/_jsxDEV("button", {
-        onClick: onLeaderboard,
-        style: {
-          width: "100%",
-          padding: "13px",
-          borderRadius: 12,
-          border: "none",
-          marginBottom: 10,
-          background: C.brass,
-          color: C.ink,
-          fontFamily: FONT_DISPLAY,
-          fontWeight: 700,
-          fontSize: 15,
-          cursor: "pointer"
-        },
-        children: "Vedi la classifica"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-        onClick: onRestart,
-        style: {
-          width: "100%",
-          padding: "13px",
-          borderRadius: 12,
-          border: `1.5px solid ${C.parchmentLine}`,
-          background: "transparent",
-          color: C.parchment,
-          fontFamily: FONT_BODY,
-          fontSize: 14,
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 6
-        },
-        children: [/*#__PURE__*/_jsxDEV(RotateCcw, {
-          size: 15
-        }, void 0, false), " Nuova spedizione"]
-      }, void 0, true)]
-    }, void 0, true) : /*#__PURE__*/_jsxDEV("button", {
-      onClick: onRestart,
-      style: {
-        width: "100%",
-        padding: "13px",
-        borderRadius: 12,
-        border: "none",
-        background: C.teal,
-        color: C.parchment,
-        fontFamily: FONT_DISPLAY,
-        fontWeight: 700,
-        fontSize: 15,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 6
-      },
-      children: [/*#__PURE__*/_jsxDEV(RotateCcw, {
-        size: 15
-      }, void 0, false), " Nuovo giro"]
-    }, void 0, true)]
-  }, void 0, true);
+    }
+  }, /*#__PURE__*/React.createElement(Sparkles, {
+    size: 36,
+    color: mode === "gioco" ? C.brassLight : C.teal,
+    style: {
+      marginTop: 8
+    }
+  }), /*#__PURE__*/React.createElement("h2", {
+    style: {
+      fontFamily: FONT_DISPLAY,
+      fontSize: 24,
+      fontWeight: 700,
+      margin: "10px 0 4px"
+    }
+  }, mode === "gioco" ? `Spedizione completata, ${playerName}!` : `Giro completato, ${playerName}!`), mode === "gioco" ? /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.parchmentDark,
+      fontSize: 14,
+      marginBottom: 18
+    }
+  }, "Hai totalizzato ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: C.brassLight,
+      fontFamily: FONT_MONO
+    }
+  }, score), " punti.") : /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.parchmentDark,
+      fontSize: 14,
+      marginBottom: 18
+    }
+  }, "Hai scoperto ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: C.teal,
+      fontFamily: FONT_MONO
+    }
+  }, targets.length), " tappe. Ecco il tuo diario di viaggio."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 12,
+      marginBottom: 22,
+      textAlign: "left"
+    }
+  }, targets.map(t => /*#__PURE__*/React.createElement("div", {
+    key: t.id,
+    style: {
+      background: C.parchment,
+      borderRadius: 12,
+      padding: 12,
+      border: `1.5px solid ${C.parchmentLine}`,
+      display: "flex",
+      gap: 12
+    }
+  }, t.photo && /*#__PURE__*/React.createElement("img", {
+    src: t.photo,
+    alt: t.name,
+    style: {
+      width: 70,
+      height: 70,
+      objectFit: "cover",
+      borderRadius: 8,
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: C.ink,
+      fontSize: 14,
+      fontWeight: 600
+    }
+  }, t.name), mode === "turismo" && t.info && /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: C.ink70,
+      fontSize: 12,
+      lineHeight: 1.4,
+      margin: "4px 0 0"
+    }
+  }, t.info.text))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: C.parchment,
+      borderRadius: 14,
+      padding: 18,
+      marginBottom: 20,
+      border: `1.5px solid ${C.parchmentLine}`,
+      textAlign: "left"
+    }
+  }, feedbackSubmitted ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: C.moss,
+      fontSize: 14,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(Check, {
+    size: 16
+  }), " Grazie del feedback!") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: FONT_MONO,
+      fontSize: 11,
+      letterSpacing: 1,
+      color: C.ink70,
+      textTransform: "uppercase",
+      marginBottom: 10
+    }
+  }, "Com'è andata?"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      justifyContent: "center",
+      marginBottom: 12
+    }
+  }, [1, 2, 3, 4, 5].map(n => /*#__PURE__*/React.createElement("button", {
+    key: n,
+    onClick: () => setFeedbackRating(n),
+    style: {
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      padding: 2
+    }
+  }, /*#__PURE__*/React.createElement(Star, {
+    size: 26,
+    color: C.brass,
+    fill: n <= feedbackRating ? C.brass : "transparent"
+  })))), /*#__PURE__*/React.createElement("textarea", {
+    value: feedbackComment,
+    onChange: e => setFeedbackComment(e.target.value),
+    placeholder: "Cosa ti è piaciuto o cosa miglioreresti? (facoltativo)",
+    rows: 2,
+    style: {
+      width: "100%",
+      padding: "10px 12px",
+      borderRadius: 10,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: C.parchmentDark + "40",
+      color: C.ink,
+      fontSize: 13,
+      fontFamily: FONT_BODY,
+      resize: "none",
+      marginBottom: 10
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: onSubmitFeedback,
+    disabled: feedbackRating === 0 || feedbackSubmitting,
+    style: {
+      width: "100%",
+      padding: "10px",
+      borderRadius: 10,
+      border: "none",
+      background: feedbackRating === 0 ? C.parchmentLine : C.moss,
+      color: C.parchment,
+      fontFamily: FONT_BODY,
+      fontWeight: 600,
+      fontSize: 13,
+      cursor: feedbackRating === 0 ? "default" : "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6,
+      opacity: feedbackSubmitting ? 0.7 : 1
+    }
+  }, feedbackSubmitting ? /*#__PURE__*/React.createElement(Loader2, {
+    size: 14,
+    style: {
+      animation: "spin 1s linear infinite"
+    }
+  }) : null, feedbackSubmitting ? "Invio…" : "Invia feedback"))), mode === "gioco" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    onClick: onLeaderboard,
+    style: {
+      width: "100%",
+      padding: "13px",
+      borderRadius: 12,
+      border: "none",
+      marginBottom: 10,
+      background: C.brass,
+      color: C.ink,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700,
+      fontSize: 15,
+      cursor: "pointer"
+    }
+  }, "Vedi la classifica"), /*#__PURE__*/React.createElement("button", {
+    onClick: onRestart,
+    style: {
+      width: "100%",
+      padding: "13px",
+      borderRadius: 12,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: "transparent",
+      color: C.parchment,
+      fontFamily: FONT_BODY,
+      fontSize: 14,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(RotateCcw, {
+    size: 15
+  }), " Nuova spedizione")) : /*#__PURE__*/React.createElement("button", {
+    onClick: onRestart,
+    style: {
+      width: "100%",
+      padding: "13px",
+      borderRadius: 12,
+      border: "none",
+      background: C.teal,
+      color: C.parchment,
+      fontFamily: FONT_DISPLAY,
+      fontWeight: 700,
+      fontSize: 15,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement(RotateCcw, {
+    size: 15
+  }), " Nuovo giro"));
 }
 
 /* ---------------------------------------------------------------
@@ -2933,91 +2781,81 @@ function LeaderboardScreen({
   playerName
 }) {
   const medalColors = [C.brassLight, "#C9C9C9", C.rust];
-  return /*#__PURE__*/_jsxDEV("div", {
-    className: "rise",
-    children: [/*#__PURE__*/_jsxDEV("div", {
-      style: {
-        textAlign: "center",
-        margin: "10px 0 20px"
-      },
-      children: [/*#__PURE__*/_jsxDEV(Trophy, {
-        size: 32,
-        color: C.brassLight
-      }, void 0, false), /*#__PURE__*/_jsxDEV("h2", {
-        style: {
-          fontFamily: FONT_DISPLAY,
-          fontSize: 22,
-          fontWeight: 700,
-          margin: "8px 0 0"
-        },
-        children: "Classifica esploratori"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("p", {
-        style: {
-          fontSize: 12,
-          color: C.parchmentDark,
-          marginTop: 4
-        },
-        children: "Visibile a tutti gli esploratori"
-      }, void 0, false)]
-    }, void 0, true), leaderboard.length === 0 ? /*#__PURE__*/_jsxDEV("p", {
-      style: {
-        textAlign: "center",
-        color: C.parchmentDark,
-        fontSize: 14
-      },
-      children: "Nessun punteggio ancora registrato. Completa un obiettivo in modalità Caccia al tesoro per comparire qui."
-    }, void 0, false) : /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rise"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      margin: "10px 0 20px"
+    }
+  }, /*#__PURE__*/React.createElement(Trophy, {
+    size: 32,
+    color: C.brassLight
+  }), /*#__PURE__*/React.createElement("h2", {
+    style: {
+      fontFamily: FONT_DISPLAY,
+      fontSize: 22,
+      fontWeight: 700,
+      margin: "8px 0 0"
+    }
+  }, "Classifica esploratori"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 12,
+      color: C.parchmentDark,
+      marginTop: 4
+    }
+  }, "Visibile a tutti gli esploratori")), leaderboard.length === 0 ? /*#__PURE__*/React.createElement("p", {
+    style: {
+      textAlign: "center",
+      color: C.parchmentDark,
+      fontSize: 14
+    }
+  }, "Nessun punteggio ancora registrato. Completa un obiettivo in modalità Caccia al tesoro per comparire qui.") : /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8
+    }
+  }, leaderboard.map((r, i) => {
+    const isMe = r.username === playerName;
+    return /*#__PURE__*/React.createElement("div", {
+      key: r.username + i,
       style: {
         display: "flex",
-        flexDirection: "column",
-        gap: 8
-      },
-      children: leaderboard.map((r, i) => {
-        const isMe = r.username === playerName;
-        return /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "12px 14px",
-            borderRadius: 12,
-            background: isMe ? "rgba(217,174,102,0.18)" : C.parchment,
-            border: `1.5px solid ${isMe ? C.brassLight : C.parchmentLine}`
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              gap: 10
-            },
-            children: [/*#__PURE__*/_jsxDEV("span", {
-              style: {
-                fontFamily: FONT_MONO,
-                fontWeight: 700,
-                fontSize: 14,
-                width: 22,
-                textAlign: "center",
-                color: i < 3 ? medalColors[i] : C.ink70
-              },
-              children: i + 1
-            }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-              style: {
-                color: C.ink,
-                fontWeight: isMe ? 700 : 500,
-                fontSize: 14
-              },
-              children: r.username
-            }, void 0, false)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontFamily: FONT_MONO,
-              fontSize: 14,
-              color: C.ink
-            },
-            children: r.score
-          }, void 0, false)]
-        }, r.username + i, true);
-      })
-    }, void 0, false)]
-  }, void 0, true);
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "12px 14px",
+        borderRadius: 12,
+        background: isMe ? "rgba(217,174,102,0.18)" : C.parchment,
+        border: `1.5px solid ${isMe ? C.brassLight : C.parchmentLine}`
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: FONT_MONO,
+        fontWeight: 700,
+        fontSize: 14,
+        width: 22,
+        textAlign: "center",
+        color: i < 3 ? medalColors[i] : C.ink70
+      }
+    }, i + 1), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: C.ink,
+        fontWeight: isMe ? 700 : 500,
+        fontSize: 14
+      }
+    }, r.username)), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: FONT_MONO,
+        fontSize: 14,
+        color: C.ink
+      }
+    }, r.score));
+  })));
 }
