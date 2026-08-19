@@ -212,7 +212,7 @@ function buildOverpassQuery(fragments, radius, lat, lon) {
   const body = fragments.map(f => f(radius, lat, lon)).join("\n      ");
   return `[out:json][timeout:25];(\n      ${body}\n    );out body 40;`;
 }
-const OVERPASS_ENDPOINTS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"];
+const OVERPASS_ENDPOINTS = ["https://overpass.kumi.systems/api/interpreter", "https://overpass-api.de/api/interpreter"];
 async function fetchPOIs(lat, lon, radius, fragments) {
   const query = buildOverpassQuery(fragments, radius, lat, lon);
   let lastErr = null;
@@ -223,7 +223,8 @@ async function fetchPOIs(lat, lon, radius, fragments) {
       const res = await fetch(endpoint, {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Accept": "application/json, */*"
         },
         body: "data=" + encodeURIComponent(query),
         signal: ctrl.signal
