@@ -597,7 +597,7 @@ export default function App() {
   const [feedbackComment, setFeedbackComment] = useState("");
   const [feedbackSubmitting, setFeedbackSubmitting] = useState(false);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
-  const playerName = session?.user?.user_metadata?.username || session?.user?.email || "";
+  const playerName = session?.user?.user_metadata?.username || session?.user?.email || (session?.user?.is_anonymous ? `Ospite-${session.user.id.slice(0, 4)}` : "");
 
   /* sessione Supabase: recupero quella esistente + ascolto i cambi (login/logout) */
   useEffect(() => {
@@ -648,6 +648,20 @@ export default function App() {
   async function handleLogout() {
     await supabase.auth.signOut();
     setScreen("setup");
+  }
+  async function handleGuestLogin() {
+    setAuthError(null);
+    setAuthLoading(true);
+    try {
+      const {
+        error
+      } = await supabase.auth.signInAnonymously();
+      if (error) throw error;
+    } catch (err) {
+      setAuthError(err.message || "Accesso come ospite non riuscito. Riprova.");
+    } finally {
+      setAuthLoading(false);
+    }
   }
   useEffect(() => {
     if (screen !== "list" && screen !== "active") return;
@@ -1037,7 +1051,8 @@ export default function App() {
       setAuthUsername: setAuthUsername,
       authError: authError,
       authLoading: authLoading,
-      onSubmit: handleAuthSubmit
+      onSubmit: handleAuthSubmit,
+      onGuestLogin: handleGuestLogin
     })));
   }
   return /*#__PURE__*/React.createElement("div", {
@@ -1332,7 +1347,8 @@ function AuthScreen({
   setAuthUsername,
   authError,
   authLoading,
-  onSubmit
+  onSubmit,
+  onGuestLogin
 }) {
   return /*#__PURE__*/React.createElement("div", {
     className: "rise"
@@ -1514,7 +1530,63 @@ function AuthScreen({
     size: 18
   }) : /*#__PURE__*/React.createElement(Mail, {
     size: 18
-  }), authLoading ? "Un attimo…" : authView === "signup" ? "Crea account" : "Accedi")));
+  }), authLoading ? "Un attimo…" : authView === "signup" ? "Crea account" : "Accedi")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      margin: "20px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      height: 1,
+      background: C.parchmentLine,
+      opacity: 0.3
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: C.parchmentDark,
+      fontFamily: FONT_MONO,
+      textTransform: "uppercase"
+    }
+  }, "oppure"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      height: 1,
+      background: C.parchmentLine,
+      opacity: 0.3
+    }
+  })), /*#__PURE__*/React.createElement("button", {
+    onClick: onGuestLogin,
+    disabled: authLoading,
+    style: {
+      width: "100%",
+      padding: "13px",
+      borderRadius: 12,
+      border: `1.5px solid ${C.parchmentLine}`,
+      background: "transparent",
+      color: C.parchmentDark,
+      fontFamily: FONT_BODY,
+      fontSize: 13,
+      cursor: authLoading ? "default" : "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6,
+      opacity: authLoading ? 0.6 : 1
+    }
+  }, /*#__PURE__*/React.createElement(Sparkles, {
+    size: 15
+  }), " Continua come ospite (solo per prova)"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 11,
+      color: C.parchmentDark,
+      textAlign: "center",
+      marginTop: 8
+    }
+  }, "Accesso istantaneo, nessun dato salvato in modo permanente: se esci o cambi dispositivo, questo account non si recupera."));
 }
 
 /* ---------------------------------------------------------------
